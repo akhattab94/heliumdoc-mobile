@@ -113,3 +113,28 @@
 - [x] Scrape HeliumDoc.com for doctor data
 - [x] Extract specialties, hospitals, and doctor profiles
 - [x] Seed database with real data
+
+
+## User Authentication
+- [x] Phone number login with OTP verification
+- [x] Email login with password
+- [x] User registration flow
+- [x] Auth router with OTP and email endpoints
+- [x] Session persistence with secure storage
+- [x] Login screen UI with phone/email/register tabs
+
+## Push Notifications
+- [x] Expo push notification setup
+- [x] Device token registration
+- [x] Appointment reminder scheduling
+- [x] Referral status update notifications
+- [x] Notifications router API
+- [x] Notifications list screen UI
+
+## Payment Gateway
+- [x] Payment service integration (Stripe-like for Qatar)
+- [x] Payment flow during booking
+- [x] Payment screen with card input
+- [x] Payment methods (Card, Apple Pay, QPay, NAPS)
+- [x] Payments router API
+- [x] Refund request functionality

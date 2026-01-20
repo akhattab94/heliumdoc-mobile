@@ -61,30 +61,19 @@ export default function BookAppointmentScreen() {
       return;
     }
 
-    setIsBooking(true);
-    
-    // Try to book via API (requires authentication)
-    try {
-      await bookMutation.mutateAsync({
-        doctorId,
-        date: params.date,
-        startTime: params.time,
+    // Navigate to payment screen
+    router.push({
+      pathname: "/payment",
+      params: {
+        appointmentId: "0", // Will be created after payment
+        amount: total.toString(),
+        doctorName: doctor?.name || "Doctor",
+        date: params.date ? formatDate(params.date) : "",
+        time: formatTime(params.time || ""),
+        doctorId: doctorId.toString(),
         consultationType,
-      });
-    } catch (error) {
-      // If API fails (e.g., not authenticated), simulate success for demo
-      setIsBooking(false);
-      if (Platform.OS === "web") {
-        alert("Appointment booked successfully! You will receive a confirmation email shortly.");
-        router.push("/");
-      } else {
-        Alert.alert(
-          "Booking Confirmed!",
-          "Your appointment has been booked successfully. You will receive a confirmation email shortly.",
-          [{ text: "OK", onPress: () => router.push("/") }]
-        );
-      }
-    }
+      },
+    });
   };
 
   if (isLoading) {

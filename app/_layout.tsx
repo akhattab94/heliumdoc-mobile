@@ -90,6 +90,9 @@ export default function RootLayout() {
             <Stack.Screen name="doctor-profile" />
             <Stack.Screen name="book-appointment" />
             <Stack.Screen name="symptom-analysis" />
+            <Stack.Screen name="login" />
+            <Stack.Screen name="payment" />
+            <Stack.Screen name="notifications" />
             <Stack.Screen name="oauth/callback" />
           </Stack>
           <StatusBar style="auto" />

@@ -8,6 +8,13 @@
       "when": 1768930372620,
       "tag": "0000_fat_joystick",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1768932350569,
+      "tag": "0001_curved_tinkerer",
+      "breakpoints": true
     }
   ]
 }

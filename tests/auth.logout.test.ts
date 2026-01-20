@@ -51,7 +51,7 @@ describe.skip("auth.logout", () => {
     const { ctx, clearedCookies } = createAuthContext();
     const caller = appRouter.createCaller(ctx);
 
-    const result = await caller.auth.logout();
+    const result = await caller.authCore.logout();
 
     expect(result).toEqual({ success: true });
     expect(clearedCookies).toHaveLength(1);

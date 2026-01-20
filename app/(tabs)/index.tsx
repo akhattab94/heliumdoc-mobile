@@ -48,9 +48,27 @@ export default function HomeScreen() {
         contentContainerStyle={{ paddingBottom: 100 }}
       >
         {/* Header */}
-        <View className="px-5 pt-4 pb-2">
-          <Text className="text-muted text-sm">Good morning</Text>
-          <Text className="text-foreground text-2xl font-bold">Welcome back!</Text>
+        <View className="px-5 pt-4 pb-2 flex-row items-center justify-between">
+          <View>
+            <Text className="text-muted text-sm">Good morning</Text>
+            <Text className="text-foreground text-2xl font-bold">Welcome back!</Text>
+          </View>
+          <View className="flex-row items-center gap-3">
+            <TouchableOpacity
+              className="w-10 h-10 rounded-full bg-surface items-center justify-center border border-border"
+              onPress={() => router.push("/notifications")}
+              activeOpacity={0.7}
+            >
+              <IconSymbol name="bell.fill" size={20} color={colors.foreground} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              className="w-10 h-10 rounded-full bg-primary items-center justify-center"
+              onPress={() => router.push("/login")}
+              activeOpacity={0.7}
+            >
+              <IconSymbol name="person.fill" size={20} color="#fff" />
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Search Bar */}

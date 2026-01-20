@@ -126,6 +126,8 @@ export const appointments = mysqlTable("appointments", {
   notes: text("notes"),
   cancelReason: text("cancelReason"),
   videoCallUrl: text("videoCallUrl"),
+  paymentStatus: mysqlEnum("paymentStatus", ["pending", "paid", "refunded", "failed"]).default("pending").notNull(),
+  paymentId: varchar("paymentId", { length: 100 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
