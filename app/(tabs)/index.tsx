@@ -1,148 +1,216 @@
-import { ScrollView, Text, View, TextInput, Pressable, FlatList } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { ScrollView, Text, View, TouchableOpacity, TextInput, Image, ActivityIndicator } from "react-native";
 import { useRouter } from "expo-router";
 import { ScreenContainer } from "@/components/screen-container";
+import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
+import { trpc } from "@/lib/trpc";
 
-const specialties = [
-  { id: "1", name: "General", icon: "medical" as const },
-  { id: "2", name: "Cardiology", icon: "heart" as const },
-  { id: "3", name: "Dermatology", icon: "body" as const },
-  { id: "4", name: "Pediatrics", icon: "happy" as const },
-  { id: "5", name: "Neurology", icon: "pulse" as const },
-  { id: "6", name: "Orthopedics", icon: "fitness" as const },
-  { id: "7", name: "Gynecology", icon: "female" as const },
-  { id: "8", name: "ENT", icon: "ear" as const },
+// Quick action buttons data
+const quickActions = [
+  { id: "find-doctor", title: "Find Doctor", icon: "stethoscope" as const, route: "/doctor-search" },
+  { id: "video-consult", title: "Video Consult", icon: "video.fill" as const, route: "/doctor-search?video=true" },
+  { id: "symptoms", title: "Symptoms", icon: "heart.text.square" as const, route: "/(tabs)/symptoms" },
+  { id: "referrals", title: "Referrals", icon: "arrow.triangle.branch" as const, route: "/(tabs)/referrals" },
 ];
 
-const featuredDoctors = [
-  { id: "1", name: "Dr. Sarah Ahmed", specialty: "Cardiologist", hospital: "Hamad Medical Corporation", rating: 4.9, reviews: 127, price: 500, videoConsult: true },
-  { id: "2", name: "Dr. Mohammed Al-Thani", specialty: "Dermatologist", hospital: "Sidra Medicine", rating: 4.8, reviews: 89, price: 450, videoConsult: true },
-  { id: "3", name: "Dr. Fatima Hassan", specialty: "Pediatrician", hospital: "Al Ahli Hospital", rating: 4.9, reviews: 156, price: 400, videoConsult: false },
+// Specialties data
+const specialtiesData = [
+  { id: 1, name: "General", icon: "stethoscope" as const },
+  { id: 2, name: "Cardiology", icon: "heart.fill" as const },
+  { id: 3, name: "Dermatology", icon: "hand.raised.fill" as const },
+  { id: 4, name: "Pediatrics", icon: "figure.child" as const },
+  { id: 5, name: "Orthopedics", icon: "figure.walk" as const },
+  { id: 6, name: "Neurology", icon: "brain.head.profile" as const },
 ];
 
 export default function HomeScreen() {
-  const colors = useColors();
   const router = useRouter();
+  const colors = useColors();
+
+  // Fetch doctors from API
+  const { data: doctorsData, isLoading: doctorsLoading } = trpc.doctors.list.useQuery({
+    limit: 5,
+    sortBy: "rating",
+    sortOrder: "desc",
+  });
+
+  // Fetch specialties from API
+  const { data: specialtiesApiData } = trpc.specialties.list.useQuery();
+
+  const doctors = doctorsData?.doctors || [];
+  const specialties = specialtiesApiData || [];
 
   return (
-    <ScreenContainer edges={["left", "right"]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Hero Section */}
-        <View className="bg-primary px-6 pt-16 pb-8" style={{ borderBottomLeftRadius: 24, borderBottomRightRadius: 24 }}>
-          <Text className="text-3xl font-bold text-white mb-1">Find Your Doctor</Text>
-          <Text className="text-base text-white/80 mb-6">Book appointments with top specialists in Qatar</Text>
-          
-          {/* Search Bar */}
-          <Pressable 
-            onPress={() => router.push("/doctor-search")}
-            style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1 }]}
-          >
-            <View className="flex-row items-center bg-white rounded-xl px-4 py-3 mb-4">
-              <Ionicons name="search" size={20} color={colors.muted} />
-              <Text className="flex-1 ml-3 text-muted">Search doctors, specialties...</Text>
-            </View>
-          </Pressable>
+    <ScreenContainer>
+      <ScrollView 
+        className="flex-1" 
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
+        {/* Header */}
+        <View className="px-5 pt-4 pb-2">
+          <Text className="text-muted text-sm">Good morning</Text>
+          <Text className="text-foreground text-2xl font-bold">Welcome back!</Text>
+        </View>
 
-          {/* Quick Actions */}
-          <View className="flex-row gap-3">
-            <Pressable 
-              className="flex-1 flex-row items-center justify-center bg-white rounded-xl py-3 gap-2"
-              onPress={() => router.push({ pathname: "/doctor-search", params: { type: "clinic" } })}
-              style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }]}
-            >
-              <Ionicons name="business" size={22} color={colors.primary} />
-              <Text className="text-primary font-semibold">Clinic Visit</Text>
-            </Pressable>
-            <Pressable 
-              className="flex-1 flex-row items-center justify-center bg-white rounded-xl py-3 gap-2"
-              onPress={() => router.push({ pathname: "/doctor-search", params: { type: "video" } })}
-              style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }]}
-            >
-              <Ionicons name="videocam" size={22} color={colors.primary} />
-              <Text className="text-primary font-semibold">Video Call</Text>
-            </Pressable>
+        {/* Search Bar */}
+        <View className="px-5 py-3">
+          <TouchableOpacity 
+            className="flex-row items-center bg-surface rounded-xl px-4 py-3 border border-border"
+            onPress={() => router.push("/doctor-search")}
+            activeOpacity={0.7}
+          >
+            <IconSymbol name="magnifyingglass" size={20} color={colors.muted} />
+            <Text className="text-muted ml-3 flex-1">Search doctors, specialties...</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Quick Actions */}
+        <View className="px-5 py-4">
+          <View className="flex-row justify-between">
+            {quickActions.map((action) => (
+              <TouchableOpacity
+                key={action.id}
+                className="items-center w-[22%]"
+                onPress={() => router.push(action.route as any)}
+                activeOpacity={0.7}
+              >
+                <View className="w-14 h-14 rounded-2xl bg-primary/10 items-center justify-center mb-2">
+                  <IconSymbol name={action.icon} size={24} color={colors.primary} />
+                </View>
+                <Text className="text-foreground text-xs text-center font-medium">{action.title}</Text>
+              </TouchableOpacity>
+            ))}
           </View>
         </View>
 
         {/* Specialties */}
-        <View className="px-6 pt-6">
-          <Text className="text-xl font-bold text-foreground mb-4">Specialties</Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} className="-mx-6 px-6">
-            {specialties.map((specialty) => (
-              <Pressable 
-                key={specialty.id}
+        <View className="py-4">
+          <View className="flex-row justify-between items-center px-5 mb-3">
+            <Text className="text-foreground text-lg font-semibold">Specialties</Text>
+            <TouchableOpacity onPress={() => router.push("/doctor-search")}>
+              <Text className="text-primary text-sm">See All</Text>
+            </TouchableOpacity>
+          </View>
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 20 }}
+          >
+            {(specialties.length > 0 ? specialties.slice(0, 8) : specialtiesData).map((specialty, index) => (
+              <TouchableOpacity
+                key={specialty.id || index}
                 className="items-center mr-4"
-                style={{ width: 72 }}
-                onPress={() => router.push({ pathname: "/doctor-search", params: { specialty: specialty.name } })}
+                onPress={() => router.push(`/doctor-search?specialty=${specialty.id}`)}
+                activeOpacity={0.7}
               >
-                <View className="w-14 h-14 rounded-2xl bg-surface items-center justify-center mb-2 shadow-sm" style={{ shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3 }}>
-                  <Ionicons name={specialty.icon} size={26} color={colors.primary} />
+                <View className="w-16 h-16 rounded-full bg-surface border border-border items-center justify-center mb-2">
+                  <IconSymbol 
+                    name={specialtiesData[index % specialtiesData.length]?.icon || "stethoscope"} 
+                    size={28} 
+                    color={colors.primary} 
+                  />
                 </View>
-                <Text className="text-xs text-foreground text-center" numberOfLines={1}>{specialty.name}</Text>
-              </Pressable>
+                <Text className="text-foreground text-xs text-center" numberOfLines={1}>
+                  {specialty.name.split(" ")[0]}
+                </Text>
+              </TouchableOpacity>
             ))}
           </ScrollView>
         </View>
 
-        {/* Featured Doctors */}
-        <View className="px-6 pt-6">
-          <View className="flex-row justify-between items-center mb-4">
-            <Text className="text-xl font-bold text-foreground">Featured Doctors</Text>
-            <Pressable onPress={() => router.push("/doctor-search")}>
-              <Text className="text-sm text-primary font-semibold">See All</Text>
-            </Pressable>
-          </View>
-          
-          {featuredDoctors.map((doctor) => (
-            <Pressable 
-              key={doctor.id}
-              className="flex-row items-center bg-surface rounded-2xl p-4 mb-3 shadow-sm"
-              style={{ shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3 }}
-              onPress={() => router.push({ pathname: "/doctor-profile", params: { id: doctor.id } })}
-            >
-              <View className="w-14 h-14 rounded-full bg-background items-center justify-center">
-                <Ionicons name="person" size={28} color={colors.primary} />
-              </View>
-              <View className="flex-1 ml-3">
-                <View className="flex-row items-center gap-2">
-                  <Text className="text-base font-semibold text-foreground">{doctor.name}</Text>
-                  {doctor.videoConsult && (
-                    <View className="bg-secondary/20 px-2 py-0.5 rounded">
-                      <Text className="text-xs text-secondary font-medium">Video</Text>
-                    </View>
-                  )}
-                </View>
-                <Text className="text-sm text-muted">{doctor.specialty}</Text>
-                <View className="flex-row items-center mt-1 gap-1">
-                  <Ionicons name="star" size={14} color={colors.warning} />
-                  <Text className="text-sm font-semibold text-foreground">{doctor.rating}</Text>
-                  <Text className="text-xs text-muted">({doctor.reviews} reviews)</Text>
-                </View>
-              </View>
-              <View className="items-end">
-                <Text className="text-lg font-bold text-primary">{doctor.price}</Text>
-                <Text className="text-xs text-muted">QAR</Text>
-              </View>
-            </Pressable>
-          ))}
+        {/* AI Symptom Checker Banner */}
+        <View className="px-5 py-3">
+          <TouchableOpacity
+            className="bg-primary rounded-2xl p-4 flex-row items-center"
+            onPress={() => router.push("/(tabs)/symptoms")}
+            activeOpacity={0.8}
+          >
+            <View className="w-12 h-12 rounded-full bg-white/20 items-center justify-center mr-4">
+              <IconSymbol name="waveform.path.ecg" size={24} color="#FFFFFF" />
+            </View>
+            <View className="flex-1">
+              <Text className="text-white font-semibold text-base">AI Symptom Checker</Text>
+              <Text className="text-white/80 text-sm">Get instant health insights</Text>
+            </View>
+            <IconSymbol name="chevron.right" size={20} color="#FFFFFF" />
+          </TouchableOpacity>
         </View>
 
-        {/* AI Symptom Checker Banner */}
-        <Pressable 
-          className="mx-6 mt-4 mb-8 flex-row items-center justify-between bg-secondary rounded-2xl p-5"
-          onPress={() => router.push("/(tabs)/symptoms")}
-          style={({ pressed }) => [{ opacity: pressed ? 0.9 : 1 }]}
-        >
-          <View className="flex-row items-center gap-4">
-            <Ionicons name="medical" size={36} color="#fff" />
-            <View>
-              <Text className="text-lg font-bold text-white">AI Symptom Checker</Text>
-              <Text className="text-sm text-white/80">Get instant health insights</Text>
-            </View>
+        {/* Featured Doctors */}
+        <View className="py-4">
+          <View className="flex-row justify-between items-center px-5 mb-3">
+            <Text className="text-foreground text-lg font-semibold">Featured Doctors</Text>
+            <TouchableOpacity onPress={() => router.push("/doctor-search")}>
+              <Text className="text-primary text-sm">See All</Text>
+            </TouchableOpacity>
           </View>
-          <Ionicons name="chevron-forward" size={24} color="#fff" />
-        </Pressable>
+          
+          {doctorsLoading ? (
+            <View className="items-center py-8">
+              <ActivityIndicator size="large" color={colors.primary} />
+            </View>
+          ) : (
+            <ScrollView 
+              horizontal 
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ paddingHorizontal: 20 }}
+            >
+              {doctors.map((doctor) => (
+                <TouchableOpacity
+                  key={doctor.id}
+                  className="bg-surface rounded-2xl p-4 mr-4 w-64 border border-border"
+                  onPress={() => router.push(`/doctor-profile?id=${doctor.id}`)}
+                  activeOpacity={0.7}
+                >
+                  <View className="flex-row items-center mb-3">
+                    <View className="w-14 h-14 rounded-full bg-primary/10 items-center justify-center mr-3">
+                      <Text className="text-primary text-lg font-bold">
+                        {doctor.name.split(" ").slice(1, 3).map(n => n[0]).join("")}
+                      </Text>
+                    </View>
+                    <View className="flex-1">
+                      <Text className="text-foreground font-semibold" numberOfLines={1}>{doctor.name}</Text>
+                      <Text className="text-muted text-sm" numberOfLines={1}>{doctor.specialtyName}</Text>
+                    </View>
+                  </View>
+                  <View className="flex-row items-center justify-between">
+                    <View className="flex-row items-center">
+                      <IconSymbol name="star.fill" size={14} color="#FFD700" />
+                      <Text className="text-foreground text-sm ml-1">{((doctor.rating || 0) / 10).toFixed(1)}</Text>
+                      <Text className="text-muted text-sm ml-1">({doctor.totalReviews})</Text>
+                    </View>
+                    <Text className="text-primary font-semibold">QAR {doctor.consultationFee}</Text>
+                  </View>
+                  <Text className="text-muted text-xs mt-2" numberOfLines={1}>
+                    {doctor.hospitalName}
+                  </Text>
+                  {doctor.videoConsultEnabled && (
+                    <View className="flex-row items-center mt-2">
+                      <IconSymbol name="video.fill" size={12} color={colors.success} />
+                      <Text className="text-success text-xs ml-1">Video Consult Available</Text>
+                    </View>
+                  )}
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          )}
+        </View>
+
+        {/* Upcoming Appointments Placeholder */}
+        <View className="px-5 py-4">
+          <Text className="text-foreground text-lg font-semibold mb-3">Upcoming Appointments</Text>
+          <View className="bg-surface rounded-2xl p-6 border border-border items-center">
+            <IconSymbol name="calendar" size={40} color={colors.muted} />
+            <Text className="text-muted text-center mt-3">No upcoming appointments</Text>
+            <TouchableOpacity 
+              className="mt-4 bg-primary px-6 py-2 rounded-full"
+              onPress={() => router.push("/doctor-search")}
+            >
+              <Text className="text-white font-medium">Book Now</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ScrollView>
     </ScreenContainer>
   );

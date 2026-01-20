@@ -1,0 +1,34 @@
+{
+  "query": "SELECT 'doctors' as table_name, COUNT(*) as count FROM doctors\nUNION ALL\nSELECT 'hospitals', COUNT(*) FROM hospitals\nUNION ALL\nSELECT 'specialties', COUNT(*) FROM specialties\nUNION ALL\nSELECT 'loyaltyTiers', COUNT(*) FROM loyaltyTiers\nUNION ALL\nSELECT 'rewards', COUNT(*) FROM rewards\nUNION ALL\nSELECT 'doctorSchedules', COUNT(*) FROM doctorSchedules;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2P3D5EVBCTQhoar.8c611c377053 --database NA7NZiSkRWdcjUeA46uaBL --execute SELECT 'doctors' as table_name, COUNT(*) as count FROM doctors\nUNION ALL\nSELECT 'hospitals', COUNT(*) FROM hospitals\nUNION ALL\nSELECT 'specialties', COUNT(*) FROM specialties\nUNION ALL\nSELECT 'loyaltyTiers', COUNT(*) FROM loyaltyTiers\nUNION ALL\nSELECT 'rewards', COUNT(*) FROM rewards\nUNION ALL\nSELECT 'doctorSchedules', COUNT(*) FROM doctorSchedules;",
+  "rows": [
+    {
+      "table_name": "loyaltyTiers",
+      "count": "8"
+    },
+    {
+      "table_name": "hospitals",
+      "count": "36"
+    },
+    {
+      "table_name": "rewards",
+      "count": "12"
+    },
+    {
+      "table_name": "doctors",
+      "count": "46"
+    },
+    {
+      "table_name": "specialties",
+      "count": "27"
+    },
+    {
+      "table_name": "doctorSchedules",
+      "count": "230"
+    }
+  ],
+  "messages": [],
+  "stdout": "table_name\tcount\nloyaltyTiers\t8\nhospitals\t36\nrewards\t12\ndoctors\t46\nspecialties\t27\ndoctorSchedules\t230\n",
+  "stderr": "",
+  "execution_time_ms": 1504
+}

@@ -1,0 +1,61 @@
+{
+  "query": "SHOW TABLES;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2P3D5EVBCTQhoar.8c611c377053 --database NA7NZiSkRWdcjUeA46uaBL --execute SHOW TABLES;",
+  "rows": [
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "appointments"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "doctorSchedules"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "doctors"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "hospitals"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "loyaltyTiers"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "loyaltyTransactions"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "medicalHistory"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "notifications"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "referrals"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "reviews"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "rewards"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "specialties"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "symptomSessions"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "userLoyalty"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "userRewards"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "users"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_NA7NZiSkRWdcjUeA46uaBL\n__drizzle_migrations\nappointments\ndoctorSchedules\ndoctors\nhospitals\nloyaltyTiers\nloyaltyTransactions\nmedicalHistory\nnotifications\nreferrals\nreviews\nrewards\nspecialties\nsymptomSessions\nuserLoyalty\nuserRewards\nusers\n",
+  "stderr": "",
+  "execution_time_ms": 1492
+}

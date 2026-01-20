@@ -1,62 +1,47 @@
 import { useState } from "react";
-import { ScrollView, Text, View, Pressable, Alert, Platform } from "react-native";
+import { ScrollView, Text, View, Pressable, Alert, Platform, ActivityIndicator } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ScreenContainer } from "@/components/screen-container";
 import { useColors } from "@/hooks/use-colors";
+import { trpc } from "@/lib/trpc";
 
-interface Reward {
-  id: string;
-  name: string;
-  description: string;
-  points: number;
-  icon: string;
-  category: string;
-}
-
-interface Activity {
-  id: string;
-  description: string;
-  points: number;
-  date: string;
-  type: "earn" | "redeem";
-}
-
-const rewards: Reward[] = [
-  { id: "1", name: "10% Off Consultation", description: "Get 10% off your next doctor consultation", points: 500, icon: "pricetag", category: "Discount" },
-  { id: "2", name: "Free Video Consultation", description: "One free video consultation with any doctor", points: 2000, icon: "videocam", category: "Free Service" },
-  { id: "3", name: "Priority Booking", description: "Skip the queue and get priority booking for 1 month", points: 1500, icon: "flash", category: "Premium" },
-  { id: "4", name: "Health Checkup Package", description: "Comprehensive health checkup at partner clinics", points: 5000, icon: "fitness", category: "Health" },
-  { id: "5", name: "25% Off Lab Tests", description: "Get 25% off on any laboratory tests", points: 800, icon: "flask", category: "Discount" },
-  { id: "6", name: "Free Pharmacy Delivery", description: "Free delivery on pharmacy orders for 3 months", points: 1000, icon: "car", category: "Free Service" },
-];
-
-const activities: Activity[] = [
-  { id: "1", description: "Appointment with Dr. Sarah Ahmed", points: 100, date: "Jan 10, 2026", type: "earn" },
-  { id: "2", description: "Referred a friend", points: 250, date: "Jan 8, 2026", type: "earn" },
-  { id: "3", description: "Redeemed: 10% Off Consultation", points: -500, date: "Jan 5, 2026", type: "redeem" },
-  { id: "4", description: "Left a review", points: 50, date: "Jan 3, 2026", type: "earn" },
-  { id: "5", description: "Completed health survey", points: 75, date: "Dec 28, 2025", type: "earn" },
-  { id: "6", description: "Appointment with Dr. Mohammed Al-Thani", points: 100, date: "Dec 20, 2025", type: "earn" },
-];
-
-const tiers = [
+// Fallback data for when user is not authenticated
+const fallbackTiers = [
   { name: "Bronze", minPoints: 0, maxPoints: 999, color: "#CD7F32", benefits: ["Earn 1 point per QAR spent", "Birthday bonus points"] },
   { name: "Silver", minPoints: 1000, maxPoints: 4999, color: "#C0C0C0", benefits: ["Earn 1.5 points per QAR spent", "Priority customer support", "Exclusive offers"] },
   { name: "Gold", minPoints: 5000, maxPoints: 9999, color: "#FFD700", benefits: ["Earn 2 points per QAR spent", "Free priority booking", "Partner discounts"] },
   { name: "Platinum", minPoints: 10000, maxPoints: 999999, color: "#E5E4E2", benefits: ["Earn 3 points per QAR spent", "Dedicated account manager", "VIP lounge access", "Annual health checkup"] },
 ];
 
+const fallbackActivities = [
+  { id: "1", description: "Appointment with Dr. Sarah Ahmed", points: 100, date: "Jan 10, 2026", type: "earn" as const },
+  { id: "2", description: "Referred a friend", points: 250, date: "Jan 8, 2026", type: "earn" as const },
+  { id: "3", description: "Redeemed: 10% Off Consultation", points: -500, date: "Jan 5, 2026", type: "redeem" as const },
+  { id: "4", description: "Left a review", points: 50, date: "Jan 3, 2026", type: "earn" as const },
+];
+
 export default function RewardsScreen() {
   const colors = useColors();
-  const [userPoints] = useState(2750);
   const [showActivities, setShowActivities] = useState(false);
 
-  const currentTier = tiers.find((t) => userPoints >= t.minPoints && userPoints <= t.maxPoints) || tiers[0];
-  const nextTier = tiers[tiers.indexOf(currentTier) + 1];
+  // Fetch loyalty tiers from API
+  const { data: tiersData } = trpc.loyalty.getTiers.useQuery();
+  
+  // Fetch available rewards from API
+  const { data: rewardsData, isLoading: rewardsLoading } = trpc.loyalty.getRewards.useQuery();
+
+  // Use API data or fallback
+  const rewards = rewardsData || [];
+  const tiers = tiersData && tiersData.length > 0 ? tiersData : fallbackTiers;
+
+  // Demo user points (in real app, this would come from user loyalty status)
+  const userPoints = 2750;
+  const currentTier = fallbackTiers.find((t) => userPoints >= t.minPoints && userPoints <= t.maxPoints) || fallbackTiers[0];
+  const nextTier = fallbackTiers[fallbackTiers.indexOf(currentTier) + 1];
   const progressToNext = nextTier ? ((userPoints - currentTier.minPoints) / (nextTier.minPoints - currentTier.minPoints)) * 100 : 100;
 
-  const handleRedeem = (reward: Reward) => {
-    if (userPoints < reward.points) {
+  const handleRedeem = (reward: typeof rewards[0]) => {
+    if (userPoints < reward.pointsCost) {
       if (Platform.OS === "web") {
         alert("Insufficient points. Keep earning to redeem this reward!");
       } else {
@@ -70,12 +55,24 @@ export default function RewardsScreen() {
     } else {
       Alert.alert(
         "Redeem Reward",
-        `Are you sure you want to redeem "${reward.name}" for ${reward.points} points?`,
+        `Are you sure you want to redeem "${reward.name}" for ${reward.pointsCost} points?`,
         [
           { text: "Cancel", style: "cancel" },
           { text: "Redeem", onPress: () => Alert.alert("Success!", "Your reward has been redeemed. Check your email for details.") },
         ]
       );
+    }
+  };
+
+  const getRewardIcon = (category: string | null): string => {
+    switch (category) {
+      case "consultation": return "medical";
+      case "lab": return "flask";
+      case "pharmacy": return "medkit";
+      case "video": return "videocam";
+      case "checkup": return "fitness";
+      case "dental": return "happy";
+      default: return "gift";
     }
   };
 
@@ -126,31 +123,42 @@ export default function RewardsScreen() {
         {/* Available Rewards */}
         <View className="px-6 pt-6">
           <Text className="text-lg font-bold text-foreground mb-3">Available Rewards</Text>
-          <View className="flex-row flex-wrap gap-3">
-            {rewards.map((reward) => (
-              <View 
-                key={reward.id} 
-                className="bg-surface rounded-2xl p-4 shadow-sm"
-                style={{ width: "47%", shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3 }}
-              >
-                <View className="w-12 h-12 rounded-full bg-primary/10 items-center justify-center mb-3">
-                  <Ionicons name={reward.icon as any} size={24} color={colors.primary} />
+          {rewardsLoading ? (
+            <View className="py-8 items-center">
+              <ActivityIndicator size="large" color={colors.primary} />
+            </View>
+          ) : rewards.length > 0 ? (
+            <View className="flex-row flex-wrap gap-3">
+              {rewards.map((reward) => (
+                <View 
+                  key={reward.id} 
+                  className="bg-surface rounded-2xl p-4 shadow-sm"
+                  style={{ width: "47%", shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3 }}
+                >
+                  <View className="w-12 h-12 rounded-full bg-primary/10 items-center justify-center mb-3">
+                    <Ionicons name={getRewardIcon(reward.category) as any} size={24} color={colors.primary} />
+                  </View>
+                  <Text className="text-sm font-semibold text-foreground mb-1" numberOfLines={2}>{reward.name}</Text>
+                  <Text className="text-xs text-muted mb-3" numberOfLines={2}>{reward.description}</Text>
+                  <View className="flex-row items-center justify-between">
+                    <Text className="text-base font-bold text-primary">{reward.pointsCost}</Text>
+                    <Pressable
+                      className={`px-3 py-1.5 rounded-full ${userPoints >= reward.pointsCost ? "bg-primary" : "bg-muted"}`}
+                      onPress={() => handleRedeem(reward)}
+                      style={({ pressed }) => [{ opacity: pressed ? 0.8 : 1 }]}
+                    >
+                      <Text className="text-xs text-white font-semibold">Redeem</Text>
+                    </Pressable>
+                  </View>
                 </View>
-                <Text className="text-sm font-semibold text-foreground mb-1" numberOfLines={2}>{reward.name}</Text>
-                <Text className="text-xs text-muted mb-3" numberOfLines={2}>{reward.description}</Text>
-                <View className="flex-row items-center justify-between">
-                  <Text className="text-base font-bold text-primary">{reward.points}</Text>
-                  <Pressable
-                    className={`px-3 py-1.5 rounded-full ${userPoints >= reward.points ? "bg-primary" : "bg-muted"}`}
-                    onPress={() => handleRedeem(reward)}
-                    style={({ pressed }) => [{ opacity: pressed ? 0.8 : 1 }]}
-                  >
-                    <Text className="text-xs text-white font-semibold">Redeem</Text>
-                  </Pressable>
-                </View>
-              </View>
-            ))}
-          </View>
+              ))}
+            </View>
+          ) : (
+            <View className="bg-surface rounded-2xl p-6 items-center">
+              <Ionicons name="gift" size={40} color={colors.muted} />
+              <Text className="text-muted mt-2">No rewards available</Text>
+            </View>
+          )}
         </View>
 
         {/* Activity History */}
@@ -165,7 +173,7 @@ export default function RewardsScreen() {
           
           {showActivities && (
             <View className="bg-surface rounded-2xl shadow-sm overflow-hidden" style={{ shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4, elevation: 3 }}>
-              {activities.map((activity, index) => (
+              {fallbackActivities.map((activity, index) => (
                 <View 
                   key={activity.id} 
                   className={`flex-row items-center p-4 ${index > 0 ? "border-t border-border" : ""}`}

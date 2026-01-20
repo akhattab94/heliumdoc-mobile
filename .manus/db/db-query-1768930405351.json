@@ -1,0 +1,22 @@
+{
+  "query": "SHOW TABLES;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2P3D5EVBCTQhoar.8c611c377053 --database NA7NZiSkRWdcjUeA46uaBL --execute SHOW TABLES;",
+  "rows": [
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "appointments"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "doctorSchedules"
+    },
+    {
+      "Tables_in_NA7NZiSkRWdcjUeA46uaBL": "users"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_NA7NZiSkRWdcjUeA46uaBL\n__drizzle_migrations\nappointments\ndoctorSchedules\nusers\n",
+  "stderr": "",
+  "execution_time_ms": 1543
+}

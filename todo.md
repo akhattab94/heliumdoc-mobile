@@ -1,71 +1,115 @@
 # Project TODO
 
 ## Core Setup
-- [x] Configure theme colors (teal primary palette)
-- [x] Set up tab navigation (5 tabs)
-- [x] Add icon mappings for all tabs
+- [x] Theme configuration (teal color palette)
+- [x] Tab bar navigation setup
+- [x] Icon mappings for all screens
+- [x] App logo generation
+- [x] Splash screen setup
+- [x] App configuration update
 
 ## Home Screen
-- [x] Hero section with search bar
-- [x] Quick action buttons (Clinic Visit, Video Call)
-- [x] Specialties horizontal scroll
-- [x] Featured doctors list
+- [x] Greeting with user name
+- [x] Search bar
+- [x] Quick action buttons (Find Doctor, Video Consult, Symptoms, Referrals)
+- [x] Upcoming appointments section
+- [x] Recent doctors section
 - [x] AI Symptom Checker banner
+- [x] Connected to API for doctors data
 
 ## Doctor Search Screen
-- [x] Filter bar with specialties
-- [x] Doctor cards with ratings and prices
+- [x] Search and filter functionality
+- [x] Specialty filter tabs
+- [x] Doctor cards with ratings, price, availability
 - [x] Video consultation badges
-- [x] Navigation to doctor profile
+- [x] Quick book button
+- [x] Connected to API for real doctor data
 
 ## Doctor Profile Screen
-- [x] Doctor header with stats
+- [x] Doctor header with photo and stats
 - [x] About section
 - [x] Education and qualifications
+- [x] Languages spoken
 - [x] Available time slots
+- [x] Date picker
 - [x] Book appointment button
+- [x] Connected to API for doctor details and schedules
 
 ## Book Appointment Screen
 - [x] Doctor summary card
-- [x] Date picker
-- [x] Time slots grid
-- [x] Consultation type toggle
-- [x] Price summary and confirm button
+- [x] Date and time display
+- [x] Consultation type selection (clinic/video)
+- [x] Payment summary with VAT
+- [x] Confirm booking button
+- [x] Connected to API for booking
 
 ## Symptom Checker Screen
-- [x] Category tabs
-- [x] Symptom checkboxes grid
-- [x] Selected symptoms display
-- [x] Patient info inputs (age, gender)
+- [x] Body part/category selection
+- [x] Symptom selection grid
+- [x] Patient info input (age, gender)
 - [x] Analyze button
+- [x] Disclaimer notice
 
 ## Symptom Analysis Screen
-- [x] Possible conditions cards with likelihood
-- [x] Recommended specialist section
+- [x] Loading state animation
+- [x] Possible conditions list with likelihood
+- [x] Severity indicators
+- [x] Recommended specialist
 - [x] Self-care tips
-- [x] Find specialist button
+- [x] Find doctor CTA
 
-## Loyalty Screen
-- [x] Points balance card
-- [x] Tier badge and progress
-- [x] Activity history
+## Loyalty/Rewards Screen
+- [x] Points balance display
+- [x] Tier status and progress
+- [x] Tier benefits list
 - [x] Available rewards grid
+- [x] Redeem functionality
+- [x] Activity history
+- [x] How to earn points section
+- [x] Connected to API for rewards data
 
 ## Referrals Screen
-- [x] Active referrals list
-- [x] Referral status badges
-- [x] Referral history section
+- [x] Referral list with status
+- [x] Filter tabs (All, Active, Completed)
+- [x] Referral cards with from/to doctors
+- [x] Urgency and status badges
+- [x] Qatar healthcare network info
 
 ## Profile Screen
-- [x] User header with avatar
-- [x] Menu items list
-- [x] Logout functionality
-
-## Branding
-- [x] Generate app logo
-- [x] Update app.config.ts with branding
-- [x] Copy logo to all required locations
+- [x] Profile header with user info
+- [x] Quick stats (appointments, points, tier)
+- [x] Settings toggles (dark mode, biometric)
+- [x] Menu items for account settings
+- [x] Support section
+- [x] Logout button
 
 ## GitHub Integration
 - [x] Create GitHub repository
 - [x] Push code to repository
+
+## Backend Infrastructure (Production Scale)
+
+### Database
+- [x] Database schema design (17 tables)
+- [x] Database migrations
+- [x] Seed database with real HeliumDoc data (23 doctors, 18 hospitals, 27 specialties)
+
+### API Endpoints
+- [x] Doctors router (list, getById, getSchedule, getAvailableSlots, getReviews)
+- [x] Appointments router (list, getById, book, cancel, reschedule)
+- [x] Specialties router (list, getById)
+- [x] Hospitals router (list, getById, getDoctors)
+- [x] Loyalty router (getTiers, getStatus, getTransactions, getRewards, redeemReward, getMyRewards)
+- [x] Referrals router (list, getById, accept)
+
+### Mobile App API Integration
+- [x] Home screen connected to doctors API
+- [x] Doctor search connected to doctors/specialties API
+- [x] Doctor profile connected to doctor details API
+- [x] Book appointment connected to booking API
+- [x] Rewards screen connected to loyalty API
+
+### Data Scraping
+- [x] Scrape HeliumDoc.com for doctor data
+- [x] Extract specialties, hospitals, and doctor profiles
+- [x] Seed database with real data

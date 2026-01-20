@@ -1,0 +1,389 @@
+{
+  "specialties": [
+    { "name": "General Practitioners (GP)", "icon": "stethoscope" },
+    { "name": "Internal Medicine", "icon": "heart" },
+    { "name": "Pediatricians", "icon": "child" },
+    { "name": "Obstetricians & Gynecologists", "icon": "female" },
+    { "name": "General Dentists", "icon": "tooth" },
+    { "name": "Orthopedic Surgeons", "icon": "bone" },
+    { "name": "Urologists", "icon": "kidney" },
+    { "name": "Eye Doctors", "icon": "eye" },
+    { "name": "Ear, Nose & Throat (ENT)", "icon": "ear" },
+    { "name": "Endocrinologist", "icon": "diabetes" },
+    { "name": "Dermatologists", "icon": "skin" },
+    { "name": "Plastic Surgeons", "icon": "surgery" },
+    { "name": "Psychiatrists", "icon": "brain" },
+    { "name": "Orthodontists", "icon": "braces" },
+    { "name": "Cardiologist", "icon": "heart-pulse" },
+    { "name": "Neurologist", "icon": "brain" },
+    { "name": "Nephrologist", "icon": "kidney" },
+    { "name": "Rheumatologist", "icon": "joints" },
+    { "name": "Physiotherapist", "icon": "physical-therapy" },
+    { "name": "Speech Therapist", "icon": "speech" }
+  ],
+  "hospitals": [
+    {
+      "name": "Yasmed Medical Center",
+      "area": "Madinat Khalifa South",
+      "address": "Madinat Khalifa South, Doha, Qatar"
+    },
+    {
+      "name": "Sidra Medicine",
+      "area": "Gharrafat Al Rayyan",
+      "address": "Gharrafat Al Rayyan, Doha, Qatar"
+    },
+    {
+      "name": "Nova Healthcare",
+      "area": "Al Maamoura",
+      "address": "Al Maamoura, Doha, Qatar"
+    },
+    {
+      "name": "Wise Medical Center",
+      "area": "Al Nasr",
+      "address": "Al Nasr, Doha, Qatar"
+    },
+    {
+      "name": "Royal Medical Center",
+      "area": "Al Gharafa",
+      "address": "Near Gulf English School, Al Maszhabiliya Street, Al Gharafa"
+    },
+    {
+      "name": "Royal Medical Center Lusail",
+      "area": "Lusail",
+      "address": "Lusail, Doha, Qatar"
+    },
+    {
+      "name": "KIMSHEALTH Medical Center",
+      "area": "Mesaimeer",
+      "address": "Near Grand Mosque, Building 13, Street 1129, Zone 56, Barwa City"
+    },
+    {
+      "name": "KIMSHEALTH Medical Center Mashaf",
+      "area": "Al Meshaf",
+      "address": "Al Meshaf, Doha, Qatar"
+    },
+    {
+      "name": "West Bay Medicare",
+      "area": "Al Dafna, Westbay",
+      "address": "3rd Floor, The Gate Mall, Omar Al Mukhtar Street"
+    },
+    {
+      "name": "Naseem Medical Centre",
+      "area": "Al Wakrah",
+      "address": "Building 53, Al Jabal Street 670, Zone 90"
+    },
+    {
+      "name": "Dr. Yasser Clinics",
+      "area": "Lusail",
+      "address": "Lusail, Doha, Qatar"
+    },
+    {
+      "name": "Quttainah Medical Center",
+      "area": "Madinat Khalifa South",
+      "address": "Madinat Khalifa South, Doha, Qatar"
+    },
+    {
+      "name": "Khalifa Medical Surgery Complex",
+      "area": "Al Waab",
+      "address": "Al Waab, Doha, Qatar"
+    },
+    {
+      "name": "Al-Ahli Hospital",
+      "area": "Bin Omran",
+      "address": "Bin Omran, Doha, Qatar"
+    },
+    {
+      "name": "Al Emadi Hospital Al Hilal",
+      "area": "Al Hilal",
+      "address": "Al Hilal, Doha, Qatar"
+    },
+    {
+      "name": "Platinum Medical Center Lusail",
+      "area": "Lusail",
+      "address": "Lusail, Doha, Qatar"
+    },
+    {
+      "name": "DOC Medical Center Lusail",
+      "area": "Lusail",
+      "address": "Lusail, Doha, Qatar"
+    },
+    {
+      "name": "First Dental Center Al Nuaija",
+      "area": "Nuaija",
+      "address": "Nuaija, Doha, Qatar"
+    }
+  ],
+  "doctors": [
+    {
+      "name": "Dr. Yasser Abbass",
+      "specialty": "Urologist",
+      "subspecialty": "Andrology",
+      "languages": ["Arabic", "English"],
+      "hospital": "Dr. Yasser Clinics",
+      "area": "Lusail",
+      "price": 500,
+      "videoConsult": false,
+      "featured": true
+    },
+    {
+      "name": "Dr. Fadi Hayek",
+      "specialty": "Vascular Surgeon",
+      "subspecialty": null,
+      "languages": ["Arabic", "English", "French"],
+      "hospital": "Royal Medical Center Lusail",
+      "area": "Lusail",
+      "price": 500,
+      "videoConsult": false,
+      "featured": true
+    },
+    {
+      "name": "Dr. Adel Qutainah",
+      "specialty": "Plastic Surgeon",
+      "subspecialty": null,
+      "languages": ["Arabic", "English"],
+      "hospital": "Quttainah Medical Center",
+      "area": "Madinat Khalifa South",
+      "price": 500,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Nandhini Karthick",
+      "specialty": "Psychiatrist",
+      "subspecialty": "Lifestyle Medicine",
+      "languages": ["English", "Malayalam", "Tamil"],
+      "hospital": "Yasmed Medical Center",
+      "area": "Madinat Khalifa South",
+      "price": 250,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Samer Al Deeb",
+      "specialty": "Orthopedic Surgeon",
+      "subspecialty": null,
+      "languages": ["Arabic", "English"],
+      "hospital": "Khalifa Medical Surgery Complex",
+      "area": "Al Waab",
+      "price": 250,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Prof. Dr. Abdulrahman Al Masri",
+      "specialty": "Endocrinologist",
+      "subspecialty": "Internal Medicine",
+      "languages": ["Arabic", "English"],
+      "hospital": "Dr. Yasser Clinics",
+      "area": "Lusail",
+      "price": 350,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Yasmeen Abdul Jalil",
+      "specialty": "Obstetrician and Gynecologist",
+      "subspecialty": null,
+      "languages": ["English", "Hindi", "Pashto", "Urdu"],
+      "hospital": "Yasmed Medical Center",
+      "area": "Madinat Khalifa South",
+      "price": 70,
+      "videoConsult": false,
+      "featured": false,
+      "popular": true
+    },
+    {
+      "name": "Mr. Azaz Swais",
+      "specialty": "Physiotherapist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English", "Persian"],
+      "hospital": "Al-Ahli Hospital",
+      "area": "Bin Omran",
+      "price": 350,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Ahmed Al Dabbagh",
+      "specialty": "Nephrologist",
+      "subspecialty": "Internal Medicine",
+      "languages": ["Arabic", "English"],
+      "hospital": "Al-Ahli Hospital",
+      "area": "Bin Omran",
+      "price": 400,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Yasser Nafie",
+      "specialty": "Audiologist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English"],
+      "hospital": "Al Emadi Hospital Al Hilal",
+      "area": "Al Hilal",
+      "price": 500,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Kamel Remita",
+      "specialty": "Rheumatologist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English", "French"],
+      "hospital": "Al Emadi Hospital Al Hilal",
+      "area": "Al Hilal",
+      "price": 500,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Wesam Azar",
+      "specialty": "Periodontist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English"],
+      "hospital": "Al Emadi Hospital Al Hilal",
+      "area": "Al Hilal",
+      "price": 500,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Wissem Soumia Haddad",
+      "specialty": "Physical Medicine and Rehabilitation",
+      "subspecialty": "Cupping Therapy",
+      "languages": ["Arabic", "English", "French"],
+      "hospital": "Al Emadi Hospital Al Hilal",
+      "area": "Al Hilal",
+      "price": 500,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Nadine Homoud",
+      "specialty": "Orthodontist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English"],
+      "hospital": "Platinum Medical Center Lusail",
+      "area": "Lusail",
+      "price": 200,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Hayman Saddik",
+      "specialty": "Osteopath",
+      "subspecialty": null,
+      "languages": ["Arabic", "English", "French"],
+      "hospital": "DOC Medical Center Lusail",
+      "area": "Lusail",
+      "price": 850,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Jery Antony",
+      "specialty": "Psychiatrist",
+      "subspecialty": null,
+      "languages": ["English", "Hindi", "Malayalam", "Tamil"],
+      "hospital": "KIMSHEALTH Medical Center Mashaf",
+      "area": "Al Meshaf",
+      "price": 150,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Walid Maya",
+      "specialty": "Ear, Nose & Throat (ENT)",
+      "subspecialty": null,
+      "languages": ["Arabic", "English", "French"],
+      "hospital": "Khalifa Medical Surgery Complex",
+      "area": "Al Waab",
+      "price": 300,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Samuli Aspinen",
+      "specialty": "Hand Surgeon",
+      "subspecialty": null,
+      "languages": ["English", "Finnish"],
+      "hospital": "DOC Medical Center Lusail",
+      "area": "Lusail",
+      "price": 500,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Doaa Hassouna",
+      "specialty": "Speech Therapist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English"],
+      "hospital": "Al Emadi Hospital Al Hilal",
+      "area": "Al Hilal",
+      "price": 500,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Alauldin Alsadiq Altayib",
+      "specialty": "Endodontist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English"],
+      "hospital": "First Dental Center Al Nuaija",
+      "area": "Nuaija",
+      "price": 200,
+      "videoConsult": false,
+      "featured": false
+    },
+    {
+      "name": "Dr. Johnny Awwad",
+      "specialty": "Obstetrician and Gynecologist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English", "French"],
+      "hospital": "Sidra Medicine",
+      "area": "Gharrafat Al Rayyan",
+      "price": 600,
+      "videoConsult": true,
+      "featured": false
+    },
+    {
+      "name": "Dr. Reeno Barg",
+      "specialty": "Obstetrician and Gynecologist",
+      "subspecialty": null,
+      "languages": ["English", "Hindi", "Pashto", "Urdu"],
+      "hospital": "Nova Healthcare",
+      "area": "Al Maamoura",
+      "price": 30,
+      "videoConsult": true,
+      "featured": false
+    },
+    {
+      "name": "Dr. Seba Zuher Hammadeh",
+      "specialty": "Obstetrician and Gynecologist",
+      "subspecialty": null,
+      "languages": ["Arabic", "English"],
+      "hospital": "Wise Medical Center",
+      "area": "Al Nasr",
+      "price": 300,
+      "videoConsult": false,
+      "featured": false,
+      "popular": true
+    }
+  ],
+  "insuranceProviders": [
+    "Aetna", "ALICO", "Al Khaleej Takaful", "AlKoot", "Allianz", 
+    "AXA", "Bupa", "Cigna", "Daman", "Doha Insurance Group",
+    "Dubai Insurance", "GlobeMed", "GlobeMed Qatar", "MetLife",
+    "MSH", "NAS", "Neuron", "NextCare", "NOW Health",
+    "Oman Insurance Company", "QLM", "SAICO", "WAPMED", "Whealth International"
+  ],
+  "areas": [
+    "Lusail", "Bin Omran", "Al Wakrah", "Al Hilal", "Al Aziziyah",
+    "Al Rayyan", "As Salatah Al Jadidah", "Al Waab", "D Ring Road",
+    "Izghawa", "Al Gharafa", "Madinat Khalifa South", "Mesaimeer",
+    "Najma", "Abu Hamour", "Duhail", "Al Maamoura", "Al Nasr",
+    "Gharrafat Al Rayyan", "Al Dafna", "Westbay", "Nuaija", "Al Meshaf"
+  ],
+  "scrapedAt": "2026-01-20T12:30:00Z",
+  "source": "heliumdoc.com"
+}

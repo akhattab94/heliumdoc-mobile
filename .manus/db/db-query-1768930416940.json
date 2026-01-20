@@ -1,0 +1,9 @@
+{
+  "query": "DROP TABLE IF EXISTS __drizzle_migrations;\nDROP TABLE IF EXISTS appointments;\nDROP TABLE IF EXISTS doctors;\nDROP TABLE IF EXISTS doctorSchedules;\nDROP TABLE IF EXISTS hospitals;\nDROP TABLE IF EXISTS loyaltyTiers;\nDROP TABLE IF EXISTS loyaltyTransactions;\nDROP TABLE IF EXISTS medicalHistory;\nDROP TABLE IF EXISTS notifications;\nDROP TABLE IF EXISTS referrals;\nDROP TABLE IF EXISTS reviews;\nDROP TABLE IF EXISTS rewards;\nDROP TABLE IF EXISTS specialties;\nDROP TABLE IF EXISTS symptomSessions;\nDROP TABLE IF EXISTS userLoyalty;\nDROP TABLE IF EXISTS userRewards;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2P3D5EVBCTQhoar.8c611c377053 --database NA7NZiSkRWdcjUeA46uaBL --execute DROP TABLE IF EXISTS __drizzle_migrations;\nDROP TABLE IF EXISTS appointments;\nDROP TABLE IF EXISTS doctors;\nDROP TABLE IF EXISTS doctorSchedules;\nDROP TABLE IF EXISTS hospitals;\nDROP TABLE IF EXISTS loyaltyTiers;\nDROP TABLE IF EXISTS loyaltyTransactions;\nDROP TABLE IF EXISTS medicalHistory;\nDROP TABLE IF EXISTS notifications;\nDROP TABLE IF EXISTS referrals;\nDROP TABLE IF EXISTS reviews;\nDROP TABLE IF EXISTS rewards;\nDROP TABLE IF EXISTS specialties;\nDROP TABLE IF EXISTS symptomSessions;\nDROP TABLE IF EXISTS userLoyalty;\nDROP TABLE IF EXISTS userRewards;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 5717
+}

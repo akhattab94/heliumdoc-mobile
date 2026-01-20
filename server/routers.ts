@@ -2,9 +2,14 @@ import { COOKIE_NAME } from "../shared/const.js";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { doctorsRouter } from "./routers/doctors";
+import { appointmentsRouter } from "./routers/appointments";
+import { specialtiesRouter } from "./routers/specialties";
+import { hospitalsRouter } from "./routers/hospitals";
+import { loyaltyRouter } from "./routers/loyalty";
+import { referralsRouter } from "./routers/referrals";
 
 export const appRouter = router({
-  // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
   auth: router({
     me: publicProcedure.query((opts) => opts.ctx.user),
@@ -17,12 +22,13 @@ export const appRouter = router({
     }),
   }),
 
-  // TODO: add feature routers here, e.g.
-  // todo: router({
-  //   list: protectedProcedure.query(({ ctx }) =>
-  //     db.getUserTodos(ctx.user.id)
-  //   ),
-  // }),
+  // Feature routers
+  doctors: doctorsRouter,
+  appointments: appointmentsRouter,
+  specialties: specialtiesRouter,
+  hospitals: hospitalsRouter,
+  loyalty: loyaltyRouter,
+  referrals: referralsRouter,
 });
 
 export type AppRouter = typeof appRouter;
