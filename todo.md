@@ -138,3 +138,11 @@
 - [x] Payment methods (Card, Apple Pay, QPay, NAPS)
 - [x] Payments router API
 - [x] Refund request functionality
+
+
+## Symptom Checker API Integration (Infermedica)
+- [x] Create Infermedica API router on server
+- [x] Add environment variables for API credentials
+- [x] Update symptom checker screen to use real API
+- [x] Implement dynamic question rendering
+- [x] Display triage results with care recommendations

@@ -11,6 +11,7 @@ import { referralsRouter } from "./routers/referrals";
 import { authRouter } from "./routers/auth";
 import { notificationsRouter } from "./routers/notifications";
 import { paymentsRouter } from "./routers/payments";
+import { symptomCheckerRouter } from "./routers/symptom-checker";
 
 export const appRouter = router({
   system: systemRouter,
@@ -39,6 +40,7 @@ export const appRouter = router({
   referrals: referralsRouter,
   notifications: notificationsRouter,
   payments: paymentsRouter,
+  symptomChecker: symptomCheckerRouter,
 });
 
 export type AppRouter = typeof appRouter;
