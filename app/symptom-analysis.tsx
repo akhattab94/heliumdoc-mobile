@@ -226,7 +226,7 @@ export default function SymptomAnalysisScreen() {
           <View className="items-center">
             <ActivityIndicator size="large" color={colors.primary} />
             <Text className="text-lg font-semibold text-foreground mt-4">Analyzing your symptoms...</Text>
-            <Text className="text-sm text-muted mt-2">Powered by Infermedica AI</Text>
+            <Text className="text-sm text-muted mt-2">Powered by Random Forest ML Model</Text>
           </View>
         </ScreenContainer>
       </>

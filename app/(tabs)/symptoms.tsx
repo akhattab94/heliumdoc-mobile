@@ -75,7 +75,7 @@ export default function SymptomsScreen() {
             <Ionicons name="medical" size={32} color="#fff" />
             <Text className="text-2xl font-bold text-white">AI Symptom Checker</Text>
           </View>
-          <Text className="text-base text-white/80">Powered by Infermedica medical AI</Text>
+          <Text className="text-base text-white/80">Powered by Random Forest ML (41 diseases, 132 symptoms)</Text>
           
           {/* Search Input */}
           <View className="mt-4 bg-white/20 rounded-xl flex-row items-center px-4">

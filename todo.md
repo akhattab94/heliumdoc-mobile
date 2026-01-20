@@ -146,3 +146,19 @@
 - [x] Update symptom checker screen to use real API
 - [x] Implement dynamic question rendering
 - [x] Display triage results with care recommendations
+
+
+## Self-Hosted ML Symptom Checker
+- [x] Research GitHub ML repositories for symptom prediction
+- [x] Clone and evaluate sohamvsonar/Disease-Prediction model
+- [x] Set up Python ML environment on server
+- [x] Create FastAPI wrapper for the ML model
+- [x] Integrate with existing symptom checker API
+- [x] Update mobile app to use ML predictions
+- [x] Test accuracy and performance
+
+## Future Enhancements (Planned)
+- [ ] Arabic language support with RTL interface
+- [ ] Arabic translations for all screens
+- [ ] Wearable device integration (Apple Health, Google Fit)
+- [ ] Calendar sync for appointments
