@@ -58,12 +58,11 @@ export default function SymptomAnalysisScreen() {
   const age = parseInt(params.age || "30", 10);
   const sex = (params.gender as "male" | "female") || "male";
 
-  // Start diagnosis mutation
-  const startDiagnosis = trpc.symptomChecker.startDiagnosis.useMutation();
-  const continueDiagnosis = trpc.symptomChecker.continueDiagnosis.useMutation();
+  // Diagnosis mutations - using getDiagnosis for both start and continue
+  const getDiagnosis = trpc.symptomChecker.getDiagnosis.useMutation();
   const getTriage = trpc.symptomChecker.getTriage.useMutation();
-  const { data: recommendedSpecialist } = trpc.symptomChecker.getRecommendedSpecialist.useQuery(
-    { conditionIds: conditions.slice(0, 3).map((c) => c.id) },
+  const { data: recommendedSpecialist } = trpc.symptomChecker.getConditionDetails.useQuery(
+    { conditionId: conditions[0]?.id || "" },
     { enabled: conditions.length > 0 && isComplete }
   );
 
@@ -79,10 +78,10 @@ export default function SymptomAnalysisScreen() {
 
         setEvidence(initialEvidence);
 
-        const result = await startDiagnosis.mutateAsync({
+        const result = await getDiagnosis.mutateAsync({
           sex,
           age,
-          symptoms: initialEvidence,
+          evidence: initialEvidence,
         });
 
         if (result.should_stop || !result.question) {
@@ -115,11 +114,12 @@ export default function SymptomAnalysisScreen() {
         evidence: currentEvidence,
       });
 
+      const display = (result as any).display || {};
       setTriageResult({
         level: result.triage_level,
-        label: result.label || getTriageLabel(result.triage_level),
-        description: result.description || getTriageDescription(result.triage_level),
-        color: result.color || getTriageColor(result.triage_level),
+        label: display.level || getTriageLabel(result.triage_level),
+        description: display.recommendation || getTriageDescription(result.triage_level),
+        color: display.color || getTriageColor(result.triage_level),
       });
     } catch (error) {
       console.error("Triage error:", error);
@@ -165,7 +165,7 @@ export default function SymptomAnalysisScreen() {
     setIsLoading(true);
 
     try {
-      const result = await continueDiagnosis.mutateAsync({
+      const result = await getDiagnosis.mutateAsync({
         sex,
         age,
         evidence: newEvidence,

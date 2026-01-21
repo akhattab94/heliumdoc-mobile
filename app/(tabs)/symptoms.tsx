@@ -20,10 +20,12 @@ export default function SymptomsScreen() {
   const { data: bodyLocations, isLoading: loadingLocations } = trpc.symptomChecker.getBodyLocations.useQuery();
 
   // Fetch symptoms from API
-  const { data: symptoms, isLoading: loadingSymptoms } = trpc.symptomChecker.getSymptoms.useQuery({
-    bodyLocation: selectedCategory,
+  const { data: symptomsData, isLoading: loadingSymptoms } = trpc.symptomChecker.getSymptoms.useQuery({
     search: searchQuery || undefined,
   });
+  
+  // Extract symptoms array from response
+  const symptoms = symptomsData?.symptoms || [];
 
   const toggleSymptom = (symptom: { id: string; name: string }) => {
     setSelectedSymptoms((prev) =>
@@ -185,7 +187,7 @@ export default function SymptomsScreen() {
               <ActivityIndicator size="large" color={colors.primary} />
               <Text className="text-muted mt-2">Loading symptoms...</Text>
             </View>
-          ) : symptoms && symptoms.length > 0 ? (
+          ) : symptoms.length > 0 ? (
             <View className="flex-row flex-wrap gap-2">
               {symptoms.map((symptom: { id: string; name: string; common_name: string }) => {
                 const isSelected = selectedSymptoms.some((s) => s.id === symptom.id);
