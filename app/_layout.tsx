@@ -93,6 +93,8 @@ export default function RootLayout() {
             <Stack.Screen name="login" />
             <Stack.Screen name="payment" />
             <Stack.Screen name="notifications" />
+            <Stack.Screen name="symptom-checker-chat" />
+            <Stack.Screen name="symptom-results" />
             <Stack.Screen name="oauth/callback" />
           </Stack>
           <StatusBar style="auto" />

@@ -1,0 +1,520 @@
+{
+  "version": "1.0",
+  "description": "Symptom to disease mapping with probability weights for diagnosis algorithm",
+  "mappings": {
+    "migraine": {
+      "primary_symptoms": ["headache", "severe_headache"],
+      "supporting_symptoms": ["nausea", "vomiting", "light_sensitivity", "blurred_vision"],
+      "weights": {
+        "headache": 0.3,
+        "severe_headache": 0.5,
+        "nausea": 0.7,
+        "vomiting": 0.8,
+        "light_sensitivity": 0.9,
+        "blurred_vision": 0.6
+      },
+      "required_count": 2,
+      "base_probability": 0.15
+    },
+    "tension_headache": {
+      "primary_symptoms": ["headache"],
+      "supporting_symptoms": ["neck_pain", "stress", "fatigue"],
+      "weights": {
+        "headache": 0.5,
+        "neck_pain": 0.6,
+        "fatigue": 0.4
+      },
+      "required_count": 1,
+      "base_probability": 0.25
+    },
+    "common_cold": {
+      "primary_symptoms": ["runny_nose", "sore_throat", "cough"],
+      "supporting_symptoms": ["sneezing", "nasal_congestion", "fatigue", "fever", "headache"],
+      "weights": {
+        "runny_nose": 0.7,
+        "sore_throat": 0.6,
+        "cough": 0.5,
+        "sneezing": 0.7,
+        "nasal_congestion": 0.8,
+        "fatigue": 0.4,
+        "fever": 0.5,
+        "headache": 0.3
+      },
+      "required_count": 2,
+      "base_probability": 0.30
+    },
+    "flu": {
+      "primary_symptoms": ["fever", "body_aches", "fatigue"],
+      "supporting_symptoms": ["headache", "cough", "sore_throat", "chills"],
+      "weights": {
+        "fever": 0.8,
+        "body_aches": 0.9,
+        "fatigue": 0.7,
+        "headache": 0.5,
+        "cough": 0.5,
+        "sore_throat": 0.4,
+        "chills": 0.8
+      },
+      "required_count": 3,
+      "base_probability": 0.20
+    },
+    "gastroenteritis": {
+      "primary_symptoms": ["nausea", "vomiting", "diarrhea"],
+      "supporting_symptoms": ["abdominal_pain", "fever", "fatigue"],
+      "weights": {
+        "nausea": 0.7,
+        "vomiting": 0.8,
+        "diarrhea": 0.9,
+        "abdominal_pain": 0.6,
+        "fever": 0.5,
+        "fatigue": 0.4
+      },
+      "required_count": 2,
+      "base_probability": 0.20
+    },
+    "urinary_tract_infection": {
+      "primary_symptoms": ["painful_urination", "frequent_urination"],
+      "supporting_symptoms": ["pelvic_pain", "blood_in_urine", "fever"],
+      "weights": {
+        "painful_urination": 0.9,
+        "frequent_urination": 0.8,
+        "pelvic_pain": 0.6,
+        "blood_in_urine": 0.7,
+        "fever": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.15
+    },
+    "sinusitis": {
+      "primary_symptoms": ["nasal_congestion", "facial_pain"],
+      "supporting_symptoms": ["headache", "runny_nose", "loss_of_smell", "fever"],
+      "weights": {
+        "nasal_congestion": 0.8,
+        "facial_pain": 0.9,
+        "headache": 0.6,
+        "runny_nose": 0.5,
+        "loss_of_smell": 0.7,
+        "fever": 0.4
+      },
+      "required_count": 2,
+      "base_probability": 0.15
+    },
+    "asthma": {
+      "primary_symptoms": ["shortness_of_breath", "wheezing"],
+      "supporting_symptoms": ["cough", "chest_tightness"],
+      "weights": {
+        "shortness_of_breath": 0.8,
+        "wheezing": 0.9,
+        "cough": 0.6,
+        "chest_tightness": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.10
+    },
+    "gerd": {
+      "primary_symptoms": ["heartburn", "chest_pain"],
+      "supporting_symptoms": ["difficulty_swallowing", "cough", "hoarseness"],
+      "weights": {
+        "heartburn": 0.9,
+        "chest_pain": 0.5,
+        "difficulty_swallowing": 0.6,
+        "cough": 0.4,
+        "hoarseness": 0.5
+      },
+      "required_count": 1,
+      "base_probability": 0.15
+    },
+    "diabetes": {
+      "primary_symptoms": ["thirst", "frequent_urination"],
+      "supporting_symptoms": ["fatigue", "blurred_vision", "weight_loss"],
+      "weights": {
+        "thirst": 0.8,
+        "frequent_urination": 0.8,
+        "fatigue": 0.5,
+        "blurred_vision": 0.6,
+        "weight_loss": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.10
+    },
+    "hypertension": {
+      "primary_symptoms": ["headache", "dizziness"],
+      "supporting_symptoms": ["nosebleed", "shortness_of_breath", "chest_pain"],
+      "weights": {
+        "headache": 0.4,
+        "dizziness": 0.5,
+        "nosebleed": 0.6,
+        "shortness_of_breath": 0.5,
+        "chest_pain": 0.4
+      },
+      "required_count": 2,
+      "base_probability": 0.10
+    },
+    "anemia": {
+      "primary_symptoms": ["fatigue", "weakness"],
+      "supporting_symptoms": ["pale_skin", "dizziness", "shortness_of_breath"],
+      "weights": {
+        "fatigue": 0.7,
+        "weakness": 0.8,
+        "pale_skin": 0.9,
+        "dizziness": 0.6,
+        "shortness_of_breath": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.10
+    },
+    "thyroid_disorder": {
+      "primary_symptoms": ["fatigue", "weight_gain"],
+      "supporting_symptoms": ["dry_skin", "constipation", "depression_symptoms", "weight_loss"],
+      "weights": {
+        "fatigue": 0.6,
+        "weight_gain": 0.7,
+        "dry_skin": 0.6,
+        "constipation": 0.5,
+        "depression_symptoms": 0.5,
+        "weight_loss": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.08
+    },
+    "anxiety_disorder": {
+      "primary_symptoms": ["anxiety", "palpitations"],
+      "supporting_symptoms": ["shortness_of_breath", "chest_tightness", "sleep_problems", "excessive_sweating"],
+      "weights": {
+        "anxiety": 0.9,
+        "palpitations": 0.7,
+        "shortness_of_breath": 0.5,
+        "chest_tightness": 0.6,
+        "sleep_problems": 0.6,
+        "excessive_sweating": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.12
+    },
+    "depression": {
+      "primary_symptoms": ["depression_symptoms", "fatigue"],
+      "supporting_symptoms": ["sleep_problems", "loss_of_appetite", "weight_loss", "weight_gain"],
+      "weights": {
+        "depression_symptoms": 0.9,
+        "fatigue": 0.6,
+        "sleep_problems": 0.7,
+        "loss_of_appetite": 0.6,
+        "weight_loss": 0.5,
+        "weight_gain": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.10
+    },
+    "allergic_rhinitis": {
+      "primary_symptoms": ["sneezing", "runny_nose", "itchy_eyes"],
+      "supporting_symptoms": ["nasal_congestion", "watery_eyes"],
+      "weights": {
+        "sneezing": 0.8,
+        "runny_nose": 0.7,
+        "itchy_eyes": 0.9,
+        "nasal_congestion": 0.6,
+        "watery_eyes": 0.8
+      },
+      "required_count": 2,
+      "base_probability": 0.20
+    },
+    "conjunctivitis": {
+      "primary_symptoms": ["red_eye", "itchy_eyes"],
+      "supporting_symptoms": ["watery_eyes", "eye_pain"],
+      "weights": {
+        "red_eye": 0.9,
+        "itchy_eyes": 0.8,
+        "watery_eyes": 0.7,
+        "eye_pain": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.15
+    },
+    "ear_infection": {
+      "primary_symptoms": ["ear_pain"],
+      "supporting_symptoms": ["hearing_loss", "ear_discharge", "fever"],
+      "weights": {
+        "ear_pain": 0.9,
+        "hearing_loss": 0.6,
+        "ear_discharge": 0.8,
+        "fever": 0.5
+      },
+      "required_count": 1,
+      "base_probability": 0.12
+    },
+    "tonsillitis": {
+      "primary_symptoms": ["sore_throat", "difficulty_swallowing"],
+      "supporting_symptoms": ["fever", "swollen_lymph_nodes", "headache"],
+      "weights": {
+        "sore_throat": 0.9,
+        "difficulty_swallowing": 0.8,
+        "fever": 0.7,
+        "swollen_lymph_nodes": 0.8,
+        "headache": 0.4
+      },
+      "required_count": 2,
+      "base_probability": 0.12
+    },
+    "bronchitis": {
+      "primary_symptoms": ["cough", "chest_tightness"],
+      "supporting_symptoms": ["shortness_of_breath", "fatigue", "fever"],
+      "weights": {
+        "cough": 0.9,
+        "chest_tightness": 0.7,
+        "shortness_of_breath": 0.6,
+        "fatigue": 0.5,
+        "fever": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.12
+    },
+    "pneumonia": {
+      "primary_symptoms": ["cough", "fever", "shortness_of_breath"],
+      "supporting_symptoms": ["chest_pain", "fatigue", "chills"],
+      "weights": {
+        "cough": 0.7,
+        "fever": 0.8,
+        "shortness_of_breath": 0.8,
+        "chest_pain": 0.6,
+        "fatigue": 0.5,
+        "chills": 0.7
+      },
+      "required_count": 3,
+      "base_probability": 0.08
+    },
+    "gastritis": {
+      "primary_symptoms": ["upper_abdominal_pain", "nausea"],
+      "supporting_symptoms": ["bloating", "loss_of_appetite", "vomiting"],
+      "weights": {
+        "upper_abdominal_pain": 0.9,
+        "nausea": 0.7,
+        "bloating": 0.6,
+        "loss_of_appetite": 0.5,
+        "vomiting": 0.6
+      },
+      "required_count": 2,
+      "base_probability": 0.12
+    },
+    "ibs": {
+      "primary_symptoms": ["abdominal_pain", "bloating"],
+      "supporting_symptoms": ["diarrhea", "constipation"],
+      "weights": {
+        "abdominal_pain": 0.8,
+        "bloating": 0.9,
+        "diarrhea": 0.7,
+        "constipation": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.10
+    },
+    "appendicitis": {
+      "primary_symptoms": ["lower_right_pain", "abdominal_pain"],
+      "supporting_symptoms": ["nausea", "vomiting", "fever", "loss_of_appetite"],
+      "weights": {
+        "lower_right_pain": 0.95,
+        "abdominal_pain": 0.6,
+        "nausea": 0.7,
+        "vomiting": 0.6,
+        "fever": 0.6,
+        "loss_of_appetite": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.05,
+      "urgency": "high"
+    },
+    "kidney_stones": {
+      "primary_symptoms": ["abdominal_pain", "painful_urination"],
+      "supporting_symptoms": ["blood_in_urine", "nausea", "vomiting"],
+      "weights": {
+        "abdominal_pain": 0.7,
+        "painful_urination": 0.8,
+        "blood_in_urine": 0.9,
+        "nausea": 0.6,
+        "vomiting": 0.6
+      },
+      "required_count": 2,
+      "base_probability": 0.06
+    },
+    "sciatica": {
+      "primary_symptoms": ["lower_back_pain", "pain_radiating_to_leg"],
+      "supporting_symptoms": ["leg_numbness", "leg_weakness"],
+      "weights": {
+        "lower_back_pain": 0.7,
+        "pain_radiating_to_leg": 0.95,
+        "leg_numbness": 0.8,
+        "leg_weakness": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.08
+    },
+    "carpal_tunnel": {
+      "primary_symptoms": ["hand_numbness", "hand_tingling"],
+      "supporting_symptoms": ["wrist_pain", "hand_weakness"],
+      "weights": {
+        "hand_numbness": 0.9,
+        "hand_tingling": 0.9,
+        "wrist_pain": 0.7,
+        "hand_weakness": 0.6
+      },
+      "required_count": 2,
+      "base_probability": 0.08
+    },
+    "osteoarthritis": {
+      "primary_symptoms": ["joint_pain", "back_stiffness"],
+      "supporting_symptoms": ["knee_pain", "hip_pain"],
+      "weights": {
+        "joint_pain": 0.8,
+        "back_stiffness": 0.7,
+        "knee_pain": 0.8,
+        "hip_pain": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.10
+    },
+    "gout": {
+      "primary_symptoms": ["joint_pain", "foot_pain"],
+      "supporting_symptoms": ["swelling", "red_skin"],
+      "weights": {
+        "joint_pain": 0.8,
+        "foot_pain": 0.9,
+        "swelling": 0.8,
+        "red_skin": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.06
+    },
+    "eczema": {
+      "primary_symptoms": ["itchy_skin", "skin_rash"],
+      "supporting_symptoms": ["dry_skin"],
+      "weights": {
+        "itchy_skin": 0.9,
+        "skin_rash": 0.8,
+        "dry_skin": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.12
+    },
+    "psoriasis": {
+      "primary_symptoms": ["skin_rash", "itchy_skin"],
+      "supporting_symptoms": ["dry_skin", "joint_pain"],
+      "weights": {
+        "skin_rash": 0.9,
+        "itchy_skin": 0.7,
+        "dry_skin": 0.6,
+        "joint_pain": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.06
+    },
+    "dehydration": {
+      "primary_symptoms": ["thirst", "fatigue"],
+      "supporting_symptoms": ["dizziness", "dry_mouth", "headache"],
+      "weights": {
+        "thirst": 0.9,
+        "fatigue": 0.6,
+        "dizziness": 0.7,
+        "dry_mouth": 0.8,
+        "headache": 0.5
+      },
+      "required_count": 2,
+      "base_probability": 0.15
+    },
+    "heat_stroke": {
+      "primary_symptoms": ["high_fever", "confusion"],
+      "supporting_symptoms": ["headache", "nausea", "rapid_heartbeat"],
+      "weights": {
+        "high_fever": 0.9,
+        "confusion": 0.95,
+        "headache": 0.6,
+        "nausea": 0.6,
+        "rapid_heartbeat": 0.8
+      },
+      "required_count": 2,
+      "base_probability": 0.05,
+      "urgency": "emergency"
+    },
+    "heart_attack": {
+      "primary_symptoms": ["chest_pain", "shortness_of_breath"],
+      "supporting_symptoms": ["arm_pain", "nausea", "excessive_sweating"],
+      "weights": {
+        "chest_pain": 0.9,
+        "shortness_of_breath": 0.8,
+        "arm_pain": 0.85,
+        "nausea": 0.6,
+        "excessive_sweating": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.03,
+      "urgency": "emergency"
+    },
+    "stroke": {
+      "primary_symptoms": ["confusion", "vision_loss"],
+      "supporting_symptoms": ["severe_headache", "hand_weakness", "difficulty_swallowing"],
+      "weights": {
+        "confusion": 0.9,
+        "vision_loss": 0.9,
+        "severe_headache": 0.8,
+        "hand_weakness": 0.85,
+        "difficulty_swallowing": 0.7
+      },
+      "required_count": 2,
+      "base_probability": 0.02,
+      "urgency": "emergency"
+    },
+    "meningitis": {
+      "primary_symptoms": ["severe_headache", "stiff_neck", "high_fever"],
+      "supporting_symptoms": ["light_sensitivity", "confusion", "nausea"],
+      "weights": {
+        "severe_headache": 0.9,
+        "stiff_neck": 0.95,
+        "high_fever": 0.9,
+        "light_sensitivity": 0.8,
+        "confusion": 0.85,
+        "nausea": 0.6
+      },
+      "required_count": 3,
+      "base_probability": 0.02,
+      "urgency": "emergency"
+    },
+    "dvt": {
+      "primary_symptoms": ["leg_swelling", "calf_pain"],
+      "supporting_symptoms": ["leg_pain", "red_skin"],
+      "weights": {
+        "leg_swelling": 0.9,
+        "calf_pain": 0.9,
+        "leg_pain": 0.7,
+        "red_skin": 0.6
+      },
+      "required_count": 2,
+      "base_probability": 0.04,
+      "urgency": "high"
+    }
+  },
+  "urgency_rules": {
+    "emergency": {
+      "symptoms": ["chest_pain", "severe_headache", "confusion", "vision_loss", "cough_with_blood", "blood_in_stool", "high_fever"],
+      "conditions": ["heart_attack", "stroke", "meningitis", "heat_stroke"],
+      "message": "Seek emergency medical care immediately. Call emergency services or go to the nearest emergency room."
+    },
+    "high": {
+      "symptoms": ["difficulty_breathing", "fainting", "severe_abdominal_pain"],
+      "conditions": ["appendicitis", "dvt", "pneumonia"],
+      "message": "See a doctor within 24 hours. If symptoms worsen, seek emergency care."
+    },
+    "medium": {
+      "symptoms": ["fever", "persistent_pain", "blood_in_urine"],
+      "conditions": ["urinary_tract_infection", "kidney_stones", "bronchitis"],
+      "message": "Schedule an appointment with your doctor within 2-3 days."
+    },
+    "low": {
+      "symptoms": ["mild_headache", "runny_nose", "mild_cough"],
+      "conditions": ["common_cold", "tension_headache", "allergic_rhinitis"],
+      "message": "Monitor your symptoms. See a doctor if they persist beyond a week or worsen."
+    },
+    "very_low": {
+      "symptoms": ["minor_discomfort"],
+      "conditions": ["muscle_strain", "dry_skin"],
+      "message": "Self-care is usually sufficient. See a doctor if symptoms persist."
+    }
+  }
+}

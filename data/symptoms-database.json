@@ -1,0 +1,250 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-01-21",
+  "body_regions": [
+    {"id": "head", "name": "Head & Face", "icon": "head"},
+    {"id": "eyes", "name": "Eyes", "icon": "eye"},
+    {"id": "ears", "name": "Ears", "icon": "ear"},
+    {"id": "nose", "name": "Nose & Sinuses", "icon": "nose"},
+    {"id": "mouth", "name": "Mouth & Throat", "icon": "mouth"},
+    {"id": "neck", "name": "Neck", "icon": "neck"},
+    {"id": "chest", "name": "Chest & Heart", "icon": "heart"},
+    {"id": "abdomen", "name": "Abdomen & Stomach", "icon": "stomach"},
+    {"id": "back", "name": "Back & Spine", "icon": "back"},
+    {"id": "arms", "name": "Arms & Hands", "icon": "arm"},
+    {"id": "legs", "name": "Legs & Feet", "icon": "leg"},
+    {"id": "skin", "name": "Skin", "icon": "skin"},
+    {"id": "urinary", "name": "Urinary & Reproductive", "icon": "kidney"},
+    {"id": "general", "name": "General / Whole Body", "icon": "body"}
+  ],
+  "symptoms": [
+    {"id": "headache", "name": "Headache", "region": "head", "related": ["migraine", "tension_headache", "cluster_headache"], "follow_up_questions": ["headache_location", "headache_intensity", "headache_duration"]},
+    {"id": "severe_headache", "name": "Severe headache", "region": "head", "related": ["migraine", "meningitis", "stroke"], "emergency_flag": true},
+    {"id": "headache_with_fever", "name": "Headache with fever", "region": "head", "related": ["meningitis", "flu", "sinusitis"]},
+    {"id": "dizziness", "name": "Dizziness", "region": "head", "related": ["vertigo", "anemia", "dehydration"]},
+    {"id": "confusion", "name": "Confusion", "region": "head", "related": ["stroke", "dehydration", "infection"], "emergency_flag": true},
+    {"id": "memory_problems", "name": "Memory problems", "region": "head", "related": ["dementia", "depression", "thyroid_disorder"]},
+    {"id": "fainting", "name": "Fainting", "region": "head", "related": ["dehydration", "heart_problems", "anemia"]},
+    
+    {"id": "red_eye", "name": "Red eye", "region": "eyes", "related": ["conjunctivitis", "dry_eye", "allergies"]},
+    {"id": "itchy_eyes", "name": "Itchy eyes", "region": "eyes", "related": ["allergic_rhinitis", "conjunctivitis", "dry_eye"]},
+    {"id": "watery_eyes", "name": "Watery eyes", "region": "eyes", "related": ["allergies", "conjunctivitis", "blocked_tear_duct"]},
+    {"id": "blurred_vision", "name": "Blurred vision", "region": "eyes", "related": ["diabetes", "migraine", "eye_strain"]},
+    {"id": "eye_pain", "name": "Eye pain", "region": "eyes", "related": ["glaucoma", "migraine", "sinusitis"]},
+    {"id": "vision_loss", "name": "Sudden vision loss", "region": "eyes", "related": ["stroke", "retinal_detachment", "glaucoma"], "emergency_flag": true},
+    {"id": "light_sensitivity", "name": "Sensitivity to light", "region": "eyes", "related": ["migraine", "meningitis", "conjunctivitis"]},
+    
+    {"id": "ear_pain", "name": "Ear pain", "region": "ears", "related": ["ear_infection", "tonsillitis", "tmj"]},
+    {"id": "hearing_loss", "name": "Hearing loss", "region": "ears", "related": ["ear_infection", "earwax_buildup", "menieres_disease"]},
+    {"id": "tinnitus", "name": "Ringing in ears", "region": "ears", "related": ["menieres_disease", "hearing_loss", "tmj"]},
+    {"id": "ear_discharge", "name": "Ear discharge", "region": "ears", "related": ["ear_infection", "perforated_eardrum"]},
+    
+    {"id": "runny_nose", "name": "Runny nose", "region": "nose", "related": ["common_cold", "allergic_rhinitis", "sinusitis"]},
+    {"id": "nasal_congestion", "name": "Nasal congestion", "region": "nose", "related": ["common_cold", "sinusitis", "allergic_rhinitis"]},
+    {"id": "sneezing", "name": "Sneezing", "region": "nose", "related": ["allergic_rhinitis", "common_cold"]},
+    {"id": "nosebleed", "name": "Nosebleed", "region": "nose", "related": ["dry_air", "hypertension", "blood_disorders"]},
+    {"id": "loss_of_smell", "name": "Loss of smell", "region": "nose", "related": ["sinusitis", "common_cold", "nasal_polyps"]},
+    {"id": "facial_pain", "name": "Facial pain/pressure", "region": "nose", "related": ["sinusitis", "dental_problems", "tmj"]},
+    
+    {"id": "sore_throat", "name": "Sore throat", "region": "mouth", "related": ["common_cold", "tonsillitis", "strep_throat"]},
+    {"id": "difficulty_swallowing", "name": "Difficulty swallowing", "region": "mouth", "related": ["tonsillitis", "gerd", "throat_infection"]},
+    {"id": "hoarseness", "name": "Hoarseness", "region": "mouth", "related": ["laryngitis", "gerd", "vocal_strain"]},
+    {"id": "mouth_sores", "name": "Mouth sores", "region": "mouth", "related": ["canker_sores", "herpes", "vitamin_deficiency"]},
+    {"id": "bad_breath", "name": "Bad breath", "region": "mouth", "related": ["dental_problems", "tonsillitis", "gerd"]},
+    {"id": "dry_mouth", "name": "Dry mouth", "region": "mouth", "related": ["dehydration", "medication_side_effect", "diabetes"]},
+    {"id": "toothache", "name": "Toothache", "region": "mouth", "related": ["dental_cavity", "tooth_abscess", "gum_disease"]},
+    
+    {"id": "neck_pain", "name": "Neck pain", "region": "neck", "related": ["muscle_strain", "cervical_spondylosis", "meningitis"]},
+    {"id": "stiff_neck", "name": "Stiff neck", "region": "neck", "related": ["muscle_strain", "meningitis", "cervical_spondylosis"]},
+    {"id": "swollen_lymph_nodes", "name": "Swollen lymph nodes", "region": "neck", "related": ["infection", "tonsillitis", "mononucleosis"]},
+    {"id": "neck_lump", "name": "Lump in neck", "region": "neck", "related": ["thyroid_nodule", "lymph_node", "cyst"]},
+    
+    {"id": "chest_pain", "name": "Chest pain", "region": "chest", "related": ["heart_attack", "angina", "gerd", "muscle_strain"], "emergency_flag": true},
+    {"id": "chest_tightness", "name": "Chest tightness", "region": "chest", "related": ["asthma", "anxiety", "heart_problems"]},
+    {"id": "shortness_of_breath", "name": "Shortness of breath", "region": "chest", "related": ["asthma", "pneumonia", "heart_failure", "anxiety"]},
+    {"id": "cough", "name": "Cough", "region": "chest", "related": ["common_cold", "bronchitis", "asthma", "gerd"]},
+    {"id": "cough_with_blood", "name": "Coughing up blood", "region": "chest", "related": ["pneumonia", "tuberculosis", "lung_cancer"], "emergency_flag": true},
+    {"id": "wheezing", "name": "Wheezing", "region": "chest", "related": ["asthma", "bronchitis", "allergies"]},
+    {"id": "palpitations", "name": "Heart palpitations", "region": "chest", "related": ["anxiety", "arrhythmia", "thyroid_disorder"]},
+    {"id": "rapid_heartbeat", "name": "Rapid heartbeat", "region": "chest", "related": ["anxiety", "dehydration", "arrhythmia"]},
+    
+    {"id": "abdominal_pain", "name": "Abdominal pain", "region": "abdomen", "related": ["gastritis", "appendicitis", "ibs", "food_poisoning"]},
+    {"id": "upper_abdominal_pain", "name": "Upper abdominal pain", "region": "abdomen", "related": ["gastritis", "gerd", "gallstones"]},
+    {"id": "lower_right_pain", "name": "Lower right abdominal pain", "region": "abdomen", "related": ["appendicitis", "ovarian_cyst", "hernia"]},
+    {"id": "nausea", "name": "Nausea", "region": "abdomen", "related": ["gastroenteritis", "food_poisoning", "migraine", "pregnancy"]},
+    {"id": "vomiting", "name": "Vomiting", "region": "abdomen", "related": ["gastroenteritis", "food_poisoning", "migraine"]},
+    {"id": "diarrhea", "name": "Diarrhea", "region": "abdomen", "related": ["gastroenteritis", "food_poisoning", "ibs"]},
+    {"id": "constipation", "name": "Constipation", "region": "abdomen", "related": ["ibs", "dehydration", "thyroid_disorder"]},
+    {"id": "bloating", "name": "Bloating", "region": "abdomen", "related": ["ibs", "lactose_intolerance", "gerd"]},
+    {"id": "heartburn", "name": "Heartburn", "region": "abdomen", "related": ["gerd", "gastritis", "hiatal_hernia"]},
+    {"id": "loss_of_appetite", "name": "Loss of appetite", "region": "abdomen", "related": ["depression", "infection", "liver_disease"]},
+    {"id": "blood_in_stool", "name": "Blood in stool", "region": "abdomen", "related": ["hemorrhoids", "anal_fissure", "colorectal_cancer"], "emergency_flag": true},
+    
+    {"id": "lower_back_pain", "name": "Lower back pain", "region": "back", "related": ["muscle_strain", "sciatica", "herniated_disc"]},
+    {"id": "upper_back_pain", "name": "Upper back pain", "region": "back", "related": ["muscle_strain", "poor_posture", "osteoarthritis"]},
+    {"id": "back_stiffness", "name": "Back stiffness", "region": "back", "related": ["muscle_strain", "arthritis", "ankylosing_spondylitis"]},
+    {"id": "pain_radiating_to_leg", "name": "Pain radiating to leg", "region": "back", "related": ["sciatica", "herniated_disc", "spinal_stenosis"]},
+    
+    {"id": "arm_pain", "name": "Arm pain", "region": "arms", "related": ["muscle_strain", "tendinitis", "heart_attack"]},
+    {"id": "hand_numbness", "name": "Hand numbness", "region": "arms", "related": ["carpal_tunnel", "diabetes", "cervical_radiculopathy"]},
+    {"id": "hand_tingling", "name": "Tingling in hands", "region": "arms", "related": ["carpal_tunnel", "diabetes", "vitamin_deficiency"]},
+    {"id": "wrist_pain", "name": "Wrist pain", "region": "arms", "related": ["carpal_tunnel", "tendinitis", "arthritis"]},
+    {"id": "elbow_pain", "name": "Elbow pain", "region": "arms", "related": ["tennis_elbow", "golfers_elbow", "arthritis"]},
+    {"id": "shoulder_pain", "name": "Shoulder pain", "region": "arms", "related": ["rotator_cuff", "frozen_shoulder", "arthritis"]},
+    {"id": "hand_weakness", "name": "Hand weakness", "region": "arms", "related": ["carpal_tunnel", "stroke", "nerve_damage"]},
+    
+    {"id": "leg_pain", "name": "Leg pain", "region": "legs", "related": ["muscle_cramp", "sciatica", "dvt"]},
+    {"id": "knee_pain", "name": "Knee pain", "region": "legs", "related": ["osteoarthritis", "meniscus_tear", "bursitis"]},
+    {"id": "ankle_pain", "name": "Ankle pain", "region": "legs", "related": ["sprain", "arthritis", "tendinitis"]},
+    {"id": "foot_pain", "name": "Foot pain", "region": "legs", "related": ["plantar_fasciitis", "gout", "arthritis"]},
+    {"id": "leg_swelling", "name": "Leg swelling", "region": "legs", "related": ["dvt", "heart_failure", "kidney_disease"]},
+    {"id": "leg_numbness", "name": "Leg numbness", "region": "legs", "related": ["sciatica", "diabetes", "peripheral_neuropathy"]},
+    {"id": "leg_cramps", "name": "Leg cramps", "region": "legs", "related": ["dehydration", "electrolyte_imbalance", "peripheral_artery_disease"]},
+    {"id": "calf_pain", "name": "Calf pain", "region": "legs", "related": ["muscle_strain", "dvt", "peripheral_artery_disease"]},
+    
+    {"id": "skin_rash", "name": "Skin rash", "region": "skin", "related": ["eczema", "allergies", "psoriasis", "infection"]},
+    {"id": "itchy_skin", "name": "Itchy skin", "region": "skin", "related": ["eczema", "allergies", "dry_skin", "liver_disease"]},
+    {"id": "dry_skin", "name": "Dry skin", "region": "skin", "related": ["eczema", "dehydration", "thyroid_disorder"]},
+    {"id": "hives", "name": "Hives", "region": "skin", "related": ["allergic_reaction", "stress", "infection"]},
+    {"id": "skin_lesion", "name": "Skin lesion/growth", "region": "skin", "related": ["skin_cancer", "wart", "cyst"]},
+    {"id": "bruising", "name": "Easy bruising", "region": "skin", "related": ["blood_disorder", "vitamin_deficiency", "liver_disease"]},
+    {"id": "pale_skin", "name": "Pale skin", "region": "skin", "related": ["anemia", "shock", "blood_loss"]},
+    {"id": "yellowing_skin", "name": "Yellowing of skin", "region": "skin", "related": ["jaundice", "liver_disease", "hepatitis"]},
+    {"id": "excessive_sweating", "name": "Excessive sweating", "region": "skin", "related": ["hyperthyroidism", "menopause", "anxiety"]},
+    
+    {"id": "painful_urination", "name": "Painful urination", "region": "urinary", "related": ["urinary_tract_infection", "kidney_stones", "std"]},
+    {"id": "frequent_urination", "name": "Frequent urination", "region": "urinary", "related": ["diabetes", "urinary_tract_infection", "prostate_problems"]},
+    {"id": "blood_in_urine", "name": "Blood in urine", "region": "urinary", "related": ["urinary_tract_infection", "kidney_stones", "bladder_cancer"]},
+    {"id": "urinary_incontinence", "name": "Urinary incontinence", "region": "urinary", "related": ["prostate_problems", "pelvic_floor_weakness", "uti"]},
+    {"id": "pelvic_pain", "name": "Pelvic pain", "region": "urinary", "related": ["urinary_tract_infection", "ovarian_cyst", "endometriosis"]},
+    {"id": "menstrual_irregularities", "name": "Irregular periods", "region": "urinary", "related": ["pcos", "thyroid_disorder", "stress"]},
+    {"id": "heavy_periods", "name": "Heavy periods", "region": "urinary", "related": ["fibroids", "hormonal_imbalance", "endometriosis"]},
+    
+    {"id": "fever", "name": "Fever", "region": "general", "related": ["infection", "flu", "covid19"]},
+    {"id": "high_fever", "name": "High fever (above 39°C)", "region": "general", "related": ["serious_infection", "flu", "meningitis"], "emergency_flag": true},
+    {"id": "fatigue", "name": "Fatigue", "region": "general", "related": ["anemia", "thyroid_disorder", "depression", "diabetes"]},
+    {"id": "weakness", "name": "Weakness", "region": "general", "related": ["anemia", "infection", "electrolyte_imbalance"]},
+    {"id": "weight_loss", "name": "Unexplained weight loss", "region": "general", "related": ["diabetes", "thyroid_disorder", "cancer"]},
+    {"id": "weight_gain", "name": "Unexplained weight gain", "region": "general", "related": ["thyroid_disorder", "pcos", "cushing_syndrome"]},
+    {"id": "night_sweats", "name": "Night sweats", "region": "general", "related": ["infection", "menopause", "lymphoma"]},
+    {"id": "chills", "name": "Chills", "region": "general", "related": ["infection", "flu", "urinary_tract_infection"]},
+    {"id": "body_aches", "name": "Body aches", "region": "general", "related": ["flu", "fibromyalgia", "infection"]},
+    {"id": "joint_pain", "name": "Joint pain", "region": "general", "related": ["arthritis", "gout", "lupus"]},
+    {"id": "muscle_pain", "name": "Muscle pain", "region": "general", "related": ["muscle_strain", "fibromyalgia", "infection"]},
+    {"id": "swelling", "name": "Swelling", "region": "general", "related": ["injury", "infection", "heart_failure"]},
+    {"id": "thirst", "name": "Excessive thirst", "region": "general", "related": ["diabetes", "dehydration"]},
+    {"id": "sleep_problems", "name": "Sleep problems", "region": "general", "related": ["insomnia", "anxiety", "sleep_apnea"]},
+    {"id": "anxiety", "name": "Anxiety", "region": "general", "related": ["anxiety_disorder", "thyroid_disorder", "depression"]},
+    {"id": "depression_symptoms", "name": "Feeling depressed", "region": "general", "related": ["depression", "thyroid_disorder", "vitamin_deficiency"]}
+  ],
+  "follow_up_questions": [
+    {
+      "id": "headache_location",
+      "question": "Where is your headache located?",
+      "type": "single_choice",
+      "options": [
+        {"value": "forehead", "label": "Forehead", "weight": {"tension_headache": 0.8}},
+        {"value": "temples", "label": "Temples (sides)", "weight": {"tension_headache": 0.9, "migraine": 0.6}},
+        {"value": "one_side", "label": "One side only", "weight": {"migraine": 0.9, "cluster_headache": 0.8}},
+        {"value": "back_of_head", "label": "Back of head", "weight": {"tension_headache": 0.7, "cervicogenic_headache": 0.8}},
+        {"value": "all_over", "label": "All over", "weight": {"tension_headache": 0.6}}
+      ]
+    },
+    {
+      "id": "headache_intensity",
+      "question": "How would you rate the pain intensity?",
+      "type": "scale",
+      "min": 1,
+      "max": 10,
+      "labels": {"1-3": "Mild", "4-6": "Moderate", "7-10": "Severe"}
+    },
+    {
+      "id": "headache_duration",
+      "question": "How long have you had this headache?",
+      "type": "duration",
+      "options": [
+        {"value": "hours", "label": "A few hours"},
+        {"value": "1_day", "label": "About a day"},
+        {"value": "2_3_days", "label": "2-3 days"},
+        {"value": "week", "label": "About a week"},
+        {"value": "longer", "label": "More than a week"}
+      ]
+    },
+    {
+      "id": "pain_character",
+      "question": "How would you describe the pain?",
+      "type": "single_choice",
+      "options": [
+        {"value": "throbbing", "label": "Throbbing/pulsating", "weight": {"migraine": 0.9}},
+        {"value": "pressure", "label": "Pressure/squeezing", "weight": {"tension_headache": 0.9}},
+        {"value": "sharp", "label": "Sharp/stabbing", "weight": {"cluster_headache": 0.8}},
+        {"value": "dull", "label": "Dull ache", "weight": {"tension_headache": 0.7}},
+        {"value": "burning", "label": "Burning", "weight": {"neuralgia": 0.7}}
+      ]
+    },
+    {
+      "id": "associated_symptoms",
+      "question": "Do you have any of these symptoms with your headache?",
+      "type": "multi_choice",
+      "options": [
+        {"value": "nausea", "label": "Nausea", "weight": {"migraine": 0.8}},
+        {"value": "vomiting", "label": "Vomiting", "weight": {"migraine": 0.9}},
+        {"value": "light_sensitivity", "label": "Sensitivity to light", "weight": {"migraine": 0.9}},
+        {"value": "sound_sensitivity", "label": "Sensitivity to sound", "weight": {"migraine": 0.8}},
+        {"value": "visual_disturbances", "label": "Visual disturbances (aura)", "weight": {"migraine": 0.95}},
+        {"value": "neck_stiffness", "label": "Neck stiffness", "weight": {"meningitis": 0.9, "tension_headache": 0.5}},
+        {"value": "fever", "label": "Fever", "weight": {"meningitis": 0.9, "sinusitis": 0.7}},
+        {"value": "none", "label": "None of these"}
+      ]
+    },
+    {
+      "id": "symptom_onset",
+      "question": "How did the symptoms start?",
+      "type": "single_choice",
+      "options": [
+        {"value": "sudden", "label": "Suddenly", "emergency_weight": 0.3},
+        {"value": "gradual", "label": "Gradually over time"},
+        {"value": "after_activity", "label": "After physical activity"},
+        {"value": "after_eating", "label": "After eating"},
+        {"value": "morning", "label": "In the morning"},
+        {"value": "night", "label": "At night"}
+      ]
+    },
+    {
+      "id": "fever_temperature",
+      "question": "What is your temperature?",
+      "type": "single_choice",
+      "options": [
+        {"value": "normal", "label": "Normal (below 37.5°C / 99.5°F)"},
+        {"value": "low_grade", "label": "Low-grade fever (37.5-38°C / 99.5-100.4°F)"},
+        {"value": "moderate", "label": "Moderate fever (38-39°C / 100.4-102.2°F)"},
+        {"value": "high", "label": "High fever (39-40°C / 102.2-104°F)", "emergency_weight": 0.2},
+        {"value": "very_high", "label": "Very high fever (above 40°C / 104°F)", "emergency_weight": 0.5}
+      ]
+    },
+    {
+      "id": "medical_history",
+      "question": "Do you have any of these conditions?",
+      "type": "multi_choice",
+      "options": [
+        {"value": "diabetes", "label": "Diabetes"},
+        {"value": "hypertension", "label": "High blood pressure"},
+        {"value": "heart_disease", "label": "Heart disease"},
+        {"value": "asthma", "label": "Asthma"},
+        {"value": "allergies", "label": "Allergies"},
+        {"value": "thyroid", "label": "Thyroid problems"},
+        {"value": "none", "label": "None of these"}
+      ]
+    },
+    {
+      "id": "recent_travel",
+      "question": "Have you traveled recently?",
+      "type": "yes_no"
+    },
+    {
+      "id": "recent_injury",
+      "question": "Have you had any recent injury or trauma?",
+      "type": "yes_no"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ import { trpc } from "@/lib/trpc";
 export default function SymptomsScreen() {
   const colors = useColors();
   const router = useRouter();
+  const [showChatOption, setShowChatOption] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("general");
   const [selectedSymptoms, setSelectedSymptoms] = useState<{ id: string; name: string }[]>([]);
   const [age, setAge] = useState("");
@@ -94,6 +95,33 @@ export default function SymptomsScreen() {
             )}
           </View>
         </View>
+
+        {/* Chat-based Symptom Checker Option */}
+        {showChatOption && (
+          <View className="mx-4 mt-4 bg-surface border border-primary/30 rounded-2xl p-4">
+            <View className="flex-row items-start">
+              <View className="bg-primary/10 p-2 rounded-xl mr-3">
+                <Ionicons name="chatbubbles" size={24} color={colors.primary} />
+              </View>
+              <View className="flex-1">
+                <Text className="text-foreground font-bold text-base">Try Conversational Mode</Text>
+                <Text className="text-muted text-sm mt-1">
+                  Chat with our AI assistant for a guided symptom assessment experience
+                </Text>
+              </View>
+              <Pressable onPress={() => setShowChatOption(false)}>
+                <Ionicons name="close" size={20} color={colors.muted} />
+              </Pressable>
+            </View>
+            <Pressable
+              className="bg-primary mt-3 py-3 rounded-xl flex-row items-center justify-center"
+              onPress={() => router.push("/symptom-checker-chat" as any)}
+            >
+              <Ionicons name="chatbubble-ellipses" size={18} color="white" />
+              <Text className="text-white font-semibold ml-2">Start Chat Assessment</Text>
+            </Pressable>
+          </View>
+        )}
 
         {/* Selected Symptoms */}
         {selectedSymptoms.length > 0 && (
