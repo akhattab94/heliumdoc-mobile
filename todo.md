@@ -187,3 +187,7 @@
 - [x] Implement /triage endpoint for urgency assessment
 - [x] Update mobile app to use live Infermedica data
 - [x] Test with real symptom scenarios
+
+
+## UI Improvements
+- [x] Redesign Symptoms tab with polished, professional look
