@@ -191,3 +191,4 @@
 
 ## UI Improvements
 - [x] Redesign Symptoms tab with polished, professional look
+- [x] Simplify symptom selection - show only top 5 common symptoms per body region instead of long lists
